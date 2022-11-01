@@ -78,9 +78,26 @@ const employees = [
     },
   ]
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
-  return res.status(200).json({ success: true, data: [employees] })
-}
+export default function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<any>
+  ) {
+  
+    switch (req.method?.toLowerCase()) {
+  
+      case 'get':
+        return res.status(200).json({ status: true, data: {method: req.method, resources: '/employees/index', employees}})
+
+      default:
+        return res
+        .status(400)
+        .json({
+          success: false, 
+          error: { 
+            type: 'object', 
+            status:'400', 
+            message:'Method not allowed'
+          },
+        });
+    }
+  }
