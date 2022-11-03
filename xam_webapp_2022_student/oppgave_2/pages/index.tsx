@@ -34,7 +34,7 @@ const Home: NextPage = () => {
   }
 
   if (isError) {
-    return <p>Noe gikk galt ... {error}</p>
+    return <p>Noe gikk galt ...</p>
   }
 
   return (
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
       <h1>Student gruppering</h1>
       <section>
         <label htmlFor="ingen">Ingen</label>
-        <input name="filter" id="ingen" type="radio" checked></input>
+        <input name="filter" id="ingen" type="radio" defaultChecked></input>
         <label htmlFor="alder">Alder</label>
         <input name="filter" id="alder" type="radio"></input>
         <label htmlFor="kjønn">Kjønn</label>
