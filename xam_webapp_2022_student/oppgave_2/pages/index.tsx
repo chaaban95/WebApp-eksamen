@@ -41,8 +41,13 @@ const Home: NextPage = () => {
     <main>
       <h1>Student gruppering</h1>
       <section>
-        <label htmlFor="ingen">Ingen</label>
-        <input name="filter" id="ingen" type="radio" defaultChecked></input>
+        <label htmlFor="alfabetisk">Alfabetisk</label>
+        <input
+          name="filter"
+          id="alfabetisk"
+          type="radio"
+          defaultChecked
+        ></input>
         <label htmlFor="alder">Alder</label>
         <input name="filter" id="alder" type="radio"></input>
         <label htmlFor="kjønn">Kjønn</label>
@@ -51,15 +56,17 @@ const Home: NextPage = () => {
         <input name="filter" id="klasse" type="radio"></input>
       </section>
 
-      {data?.students?.map((student) => (
-        <ul key={student.id}>
-          <li>{student.id}</li>
-          <li>{student.name}</li>
-          <li>{student.age}</li>
-          <li>{student.gender}</li>
-          <li>{student.group}</li>
-        </ul>
-      ))}
+      {data?.students
+        ?.sort((a, b) => (a.name > b.name ? 1 : -1))
+        .map((student) => (
+          <ul key={student.id}>
+            <li>{student.id}</li>
+            <li>{student.name}</li>
+            <li>{student.age}</li>
+            <li>{student.gender}</li>
+            <li>{student.group}</li>
+          </ul>
+        ))}
     </main>
   )
 }
