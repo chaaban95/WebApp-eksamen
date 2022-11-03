@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/nb_NO'
 
 const prisma = new PrismaClient()
 
@@ -11,10 +11,11 @@ const students = (count: number) => {
         id: faker.datatype.uuid(),
         gender: faker.name.sexType(),
         name: faker.name.firstName(),
-        age: faker.datatype.number({ min: 18, max: 40 }),
+        age: faker.datatype.number({ min: 18, max: 35 }),
       }
     })
 }
+
 async function main() {
   console.log(`Start seeding ...`)
   const student = students(25)
