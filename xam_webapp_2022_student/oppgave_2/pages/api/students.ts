@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     const students = await prisma.student.findMany()
-    return res.status(200).json({ success: true, data: students })
+    return res.status(200).json({ success: true, students })
   } else {
     return res.status(405).json({ success: false, error: 'Method not allowed' })
   }

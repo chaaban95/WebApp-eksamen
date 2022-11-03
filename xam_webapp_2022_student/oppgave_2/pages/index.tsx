@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { getStudents } from '../api/students'
 
-const Home: NextPage = ({}) => {
+const Home: NextPage = () => {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState({})
   const [error, setError] = useState({})
@@ -34,7 +34,7 @@ const Home: NextPage = ({}) => {
   }
 
   if (isError) {
-    return <p>Noe gikk galt ...</p>
+    return <p>Noe gikk galt ... {error}</p>
   }
 
   return (
@@ -50,13 +50,14 @@ const Home: NextPage = ({}) => {
         <label htmlFor="klasse">Klasse</label>
         <input name="filter" id="klasse" type="radio"></input>
       </section>
-      {data.map(() => (
-        <ul key={data.id}>
-          <li>{data.id}</li>
-          <li>{data.name}</li>
-          <li>{data.age}</li>
-          <li>{data.gender}</li>
-          <li>{data.group}</li>
+
+      {data?.students?.map((student) => (
+        <ul key={student.id}>
+          <li>{student.id}</li>
+          <li>{student.name}</li>
+          <li>{student.age}</li>
+          <li>{student.gender}</li>
+          <li>{student.group}</li>
         </ul>
       ))}
     </main>
