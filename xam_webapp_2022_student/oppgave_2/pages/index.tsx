@@ -1,7 +1,42 @@
-import { Student } from '@prisma/client'
 import type { NextPage } from 'next'
+import { useEffect, useState } from 'react'
+import { getStudents } from '../api/students'
 
-const Home: NextPage = ({ student }) => {
+const Home: NextPage = ({}) => {
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState({})
+  const [error, setError] = useState({})
+
+  const isLoading = status === 'loading'
+  const isError = status === 'error'
+  const isSuccess = status === 'success'
+
+  useEffect(() => {
+    const handler = async () => {
+      setStatus('loading')
+      try {
+        const result = await getStudents({})
+        setStatus('success')
+        setData(result)
+      } catch (error) {
+        setStatus('error')
+        setError(error as any)
+        setTimeout(() => {
+          setStatus('idle')
+        }, 2000)
+      }
+    }
+    handler()
+  }, [])
+
+  if (isLoading) {
+    return <p>Henter data ...</p>
+  }
+
+  if (isError) {
+    return <p>Noe gikk galt ...</p>
+  }
+
   return (
     <main>
       <h1>Student gruppering</h1>
@@ -15,13 +50,13 @@ const Home: NextPage = ({ student }) => {
         <label htmlFor="klasse">Klasse</label>
         <input name="filter" id="klasse" type="radio"></input>
       </section>
-      {student.map((item: Student) => (
-        <ul key={item.id}>
-          <li>{item.id}</li>
-          <li>{item.name}</li>
-          <li>{item.age}</li>
-          <li>{item.gender}</li>
-          <li>{item.group}</li>
+      {data.map(() => (
+        <ul key={data.id}>
+          <li>{data.id}</li>
+          <li>{data.name}</li>
+          <li>{data.age}</li>
+          <li>{data.gender}</li>
+          <li>{data.group}</li>
         </ul>
       ))}
     </main>
@@ -29,20 +64,3 @@ const Home: NextPage = ({ student }) => {
 }
 
 export default Home
-
-export const getServerSideProps = async () => {
-  const student = await prisma.student.findMany({
-    select: {
-      id: true,
-      name: true,
-      age: true,
-      gender: true,
-      group: true,
-    },
-  })
-  return {
-    props: {
-      student,
-    },
-  }
-}
