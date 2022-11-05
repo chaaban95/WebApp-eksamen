@@ -6,6 +6,7 @@ const Home: NextPage = () => {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState({})
   const [error, setError] = useState({})
+  const [filteredData, setFilteredData] = useState({})
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -41,42 +42,42 @@ const Home: NextPage = () => {
     console.log(event.target.value)
 
     if (event.target.value == 'age') {
-      console.log(
-        data.students.reduce((acc, cur) => {
-          if (acc[cur.age]) {
-            acc[cur.age]++
-          } else {
-            acc[cur.age] = 1
-          }
-          return acc
-        }, {})
-      )
+      const result = data.students.reduce((acc, cur) => {
+        if (acc[cur.age]) {
+          acc[cur.age]++
+        } else {
+          acc[cur.age] = 1
+        }
+        return acc
+      }, {})
+      setFilteredData(result)
+      console.log(result)
     }
 
     if (event.target.value == 'gender') {
-      console.log(
-        data.students.reduce((acc, cur) => {
-          if (acc[cur.gender]) {
-            acc[cur.gender]++
-          } else {
-            acc[cur.gender] = 1
-          }
-          return acc
-        }, {})
-      )
+      const result = data.students.reduce((acc, cur) => {
+        if (acc[cur.gender]) {
+          acc[cur.gender]++
+        } else {
+          acc[cur.gender] = 1
+        }
+        return acc
+      }, {})
+      setFilteredData(result)
+      console.log(result)
     }
 
     if (event.target.value == 'group') {
-      console.log(
-        data.students.reduce((acc, cur) => {
-          if (acc[cur.group]) {
-            acc[cur.group]++
-          } else {
-            acc[cur.group] = 1
-          }
-          return acc
-        }, {})
-      )
+      const result = data.students.reduce((acc, cur) => {
+        if (acc[cur.group]) {
+          acc[cur.group]++
+        } else {
+          acc[cur.group] = 1
+        }
+        return acc
+      }, {})
+      setFilteredData(result)
+      console.log(result)
     }
   }
 
