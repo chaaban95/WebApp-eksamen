@@ -42,39 +42,30 @@ const Home: NextPage = () => {
     console.log(event.target.value)
 
     if (event.target.value == 'age') {
-      const result = data.students.reduce((acc, cur) => {
-        if (acc[cur.age]) {
-          acc[cur.age]++
-        } else {
-          acc[cur.age] = 1
-        }
-        return acc
+      const result = data.students.reduce((gStudents, sStudent) => {
+        if (gStudents[sStudent.age] == null) gStudents[sStudent.age] = []
+        gStudents[sStudent.age].push(sStudent)
+        return gStudents
       }, {})
       setFilteredData(result)
       console.log(result)
     }
 
     if (event.target.value == 'gender') {
-      const result = data.students.reduce((acc, cur) => {
-        if (acc[cur.gender]) {
-          acc[cur.gender]++
-        } else {
-          acc[cur.gender] = 1
-        }
-        return acc
+      const result = data.students.reduce((gStudents, sStudent) => {
+        if (gStudents[sStudent.gender] == null) gStudents[sStudent.gender] = []
+        gStudents[sStudent.gender].push(sStudent)
+        return gStudents
       }, {})
       setFilteredData(result)
       console.log(result)
     }
 
     if (event.target.value == 'group') {
-      const result = data.students.reduce((acc, cur) => {
-        if (acc[cur.group]) {
-          acc[cur.group]++
-        } else {
-          acc[cur.group] = 1
-        }
-        return acc
+      const result = data.students.reduce((gStudents, sStudent) => {
+        if (gStudents[sStudent.group] == null) gStudents[sStudent.group] = []
+        gStudents[sStudent.group].push(sStudent)
+        return gStudents
       }, {})
       setFilteredData(result)
       console.log(result)
