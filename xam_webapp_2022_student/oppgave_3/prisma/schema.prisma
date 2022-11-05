@@ -12,30 +12,30 @@ generator dbml {
 }
 
 model Employee {
-  id Int @id @default(autoincrement())
-  name String 
-  rules String 
-  day Day[]
+  id    Int    @id @default(autoincrement())
+  name  String
+  rules String
+  day   Day[]
 }
 
 model Day {
-  id String @id @default(cuid())
-  name String 
-  employee Employee @relation(fields: [employeeId], references: [id])
+  id         String   @id @default(cuid())
+  name       String
+  employee   Employee @relation(fields: [employeeId], references: [id])
   employeeId Int
-  week Week @relation(fields: [weekId], references: [id])
-  weekId String
+  week       Week     @relation(fields: [weekId], references: [id])
+  weekId     String
 }
 
 model Week {
-  id String @id @default(cuid())
-  week Int
-  lunch Lunch @relation(fields: [lunchId], references: [id])
-  lunchId String 
-  day Day[]
+  id      String @id @default(cuid())
+  week    Int
+  lunch   Lunch  @relation(fields: [lunchId], references: [id])
+  lunchId String
+  day     Day[]
 }
 
 model Lunch {
-  id String @id @default(cuid())
+  id   String @id @default(cuid())
   week Week[]
 }
