@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { employees } from '../../../data/employees';
+import lunchData from '../../../data/lunch.json'
 
 
 export default function handler(
