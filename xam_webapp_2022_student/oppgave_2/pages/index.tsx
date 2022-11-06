@@ -1,3 +1,4 @@
+import { Agent } from 'http'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { getStudents } from '../api/students'
@@ -6,7 +7,8 @@ const Home: NextPage = () => {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState({})
   const [error, setError] = useState({})
-  const [filteredData, setFilteredData] = useState({})
+  const [filteredData, setFilteredData] = useState()
+  const [tru, setTru] = useState(true)
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -39,34 +41,40 @@ const Home: NextPage = () => {
   }
 
   function handleChange(event) {
-    console.log(event.target.value)
+    if (event?.target.value == 'ingen') {
+      setTru(true)
+      setFilteredData()
+    }
 
-    if (event.target.value == 'age') {
+    if (event?.target.value == 'age') {
       const result = data.students.reduce((gStudents, sStudent) => {
         if (gStudents[sStudent.age] == null) gStudents[sStudent.age] = []
         gStudents[sStudent.age].push(sStudent)
         return gStudents
       }, {})
+      setTru(false)
       setFilteredData(result)
       console.log(result)
     }
 
-    if (event.target.value == 'gender') {
+    if (event?.target.value == 'gender') {
       const result = data.students.reduce((gStudents, sStudent) => {
         if (gStudents[sStudent.gender] == null) gStudents[sStudent.gender] = []
         gStudents[sStudent.gender].push(sStudent)
         return gStudents
       }, {})
+      setTru(false)
       setFilteredData(result)
       console.log(result)
     }
 
-    if (event.target.value == 'group') {
+    if (event?.target.value == 'group') {
       const result = data.students.reduce((gStudents, sStudent) => {
         if (gStudents[sStudent.group] == null) gStudents[sStudent.group] = []
         gStudents[sStudent.group].push(sStudent)
         return gStudents
       }, {})
+      setTru(false)
       setFilteredData(result)
       console.log(result)
     }
@@ -75,7 +83,7 @@ const Home: NextPage = () => {
   return (
     <main>
       <h1>Student gruppering</h1>
-      <section>
+      <section onChange={handleChange}>
         <label htmlFor="ingen">Ingen</label>
         <input
           name="filter"
@@ -83,45 +91,27 @@ const Home: NextPage = () => {
           value="ingen"
           type="radio"
           defaultChecked
-          onChange={handleChange}
         ></input>
         <label htmlFor="alder">Alder</label>
-        <input
-          name="filter"
-          id="alder"
-          value="age"
-          type="radio"
-          onChange={handleChange}
-        ></input>
+        <input name="filter" id="alder" value="age" type="radio"></input>
         <label htmlFor="kjønn">Kjønn</label>
-        <input
-          name="filter"
-          id="kjønn"
-          value="gender"
-          type="radio"
-          onChange={handleChange}
-        ></input>
+        <input name="filter" id="kjønn" value="gender" type="radio"></input>
         <label htmlFor="klasse">Klasse</label>
-        <input
-          name="filter"
-          id="klasse"
-          value="group"
-          type="radio"
-          onChange={handleChange}
-        ></input>
+        <input name="filter" id="klasse" value="group" type="radio"></input>
       </section>
-      {/* <p className="antall">Antall studenter: {data.students.length}</p> */}
-      {data?.students
-        ?.sort((a, b) => (a.name > b.name ? 1 : -1))
-        .map((student) => (
-          <ul key={student.id}>
-            <li>{student.id}</li>
-            <li>{student.name}</li>
-            <li>{student.age}</li>
-            <li>{student.gender}</li>
-            <li>{student.group}</li>
-          </ul>
-        ))}
+      {<h3>{JSON.stringify(filteredData)}</h3>}
+      {tru &&
+        data?.students
+          ?.sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map((student) => (
+            <ul key={student.id}>
+              <li>{student.id}</li>
+              <li>{student.name}</li>
+              <li>{student.age}</li>
+              <li>{student.gender}</li>
+              <li>{student.group}</li>
+            </ul>
+          ))}
     </main>
   )
 }
