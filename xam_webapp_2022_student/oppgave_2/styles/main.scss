@@ -40,7 +40,18 @@ ul {
   margin-bottom: 2rem;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+
+  span {
+    display: block;
+    width: 100%;
+    align-self: flex-start;
+    &:nth-child(1) {
+      min-width: 150px;
+    }
+    &:nth-child(2) {
+      padding-left: 5rem;
+    }
+  }
 
   &:nth-of-type(2n) {
     background-color: #c1c1c1;
@@ -48,7 +59,9 @@ ul {
 }
 
 li {
-  width: 20%;
+  word-break: break-all;
+  padding: 1rem;
+  width: 100%;
   font-weight: 500;
 }
 
@@ -62,9 +75,4 @@ li {
 
 h1 {
   padding: 1rem;
-}
-
-.antall {
-  padding: 1rem;
-  text-align: center;
 }
