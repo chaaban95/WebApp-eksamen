@@ -1,4 +1,3 @@
-import { Agent } from 'http'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { getStudents } from '../api/students'
@@ -8,7 +7,7 @@ const Home: NextPage = () => {
   const [data, setData] = useState({})
   const [error, setError] = useState({})
   const [filteredData, setFilteredData] = useState({})
-  const [tru, setTru] = useState(true)
+  const [vis, setVis] = useState(true)
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -42,7 +41,7 @@ const Home: NextPage = () => {
 
   function handleChange(event) {
     if (event?.target.value == 'ingen') {
-      setTru(true)
+      setVis(true)
       setFilteredData({})
     }
 
@@ -52,7 +51,7 @@ const Home: NextPage = () => {
         gStudents[sStudent.age].push(sStudent)
         return gStudents
       }, {})
-      setTru(false)
+      setVis(false)
       setFilteredData(result)
       console.log(result)
     }
@@ -63,7 +62,7 @@ const Home: NextPage = () => {
         gStudents[sStudent.gender].push(sStudent)
         return gStudents
       }, {})
-      setTru(false)
+      setVis(false)
       setFilteredData(result)
       console.log(result)
     }
@@ -74,7 +73,7 @@ const Home: NextPage = () => {
         gStudents[sStudent.group].push(sStudent)
         return gStudents
       }, {})
-      setTru(false)
+      setVis(false)
       setFilteredData(result)
       console.log(result)
     }
@@ -112,7 +111,7 @@ const Home: NextPage = () => {
         ))
       )}
 
-      {tru &&
+      {vis &&
         data?.students
           ?.sort((a, b) => (a.name > b.name ? 1 : -1))
           .map((student) => (
