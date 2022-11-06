@@ -43,7 +43,7 @@ const Home: NextPage = () => {
   function handleChange(event) {
     if (event?.target.value == 'ingen') {
       setTru(true)
-      setFilteredData()
+      setFilteredData({})
     }
 
     if (event?.target.value == 'age') {
@@ -99,7 +99,19 @@ const Home: NextPage = () => {
         <label htmlFor="klasse">Klasse</label>
         <input name="filter" id="klasse" value="group" type="radio"></input>
       </section>
-      <h3>{JSON.stringify(filteredData)}</h3>
+
+      {Object?.values(filteredData)?.map((student) =>
+        student.map((st) => (
+          <ul key={st.id}>
+            <li>{st.id}</li>
+            <li>{st.name}</li>
+            <li>{st.age}</li>
+            <li>{st.gender}</li>
+            <li>{st.group}</li>
+          </ul>
+        ))
+      )}
+
       {tru &&
         data?.students
           ?.sort((a, b) => (a.name > b.name ? 1 : -1))
