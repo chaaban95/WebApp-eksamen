@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState({})
   const [error, setError] = useState({})
-  const [filteredData, setFilteredData] = useState()
+  const [filteredData, setFilteredData] = useState({})
   const [tru, setTru] = useState(true)
 
   const isLoading = status === 'loading'
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
         <label htmlFor="klasse">Klasse</label>
         <input name="filter" id="klasse" value="group" type="radio"></input>
       </section>
-      {<h3>{JSON.stringify(filteredData)}</h3>}
+      <h3>{JSON.stringify(filteredData)}</h3>
       {tru &&
         data?.students
           ?.sort((a, b) => (a.name > b.name ? 1 : -1))
