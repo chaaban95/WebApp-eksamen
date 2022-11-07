@@ -28,7 +28,7 @@ export const useGame = () => {
     )
   }
 
-  const isGameOver = strikes.every((strike: any) => strike.guess) ? true : false
+  const isGameOver = strikes.every((strike: Strike) => strike.guess) ? true : false
 
   const getMessage = () => {
     if (isSolved(country, guesses) && !isGameOver) return 'Du klarte det'
@@ -37,7 +37,7 @@ export const useGame = () => {
   }
 
   const isMatch = (letter: string) => {
-    if (guesses.find((guess: any) => guess === letter.toLowerCase())) {
+    if (guesses.find((guess: string) => guess === letter.toLowerCase())) {
       return letter
     }
     return '_'
