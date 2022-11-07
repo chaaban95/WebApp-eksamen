@@ -1,6 +1,6 @@
 // TODO: Her er det bugs
 
-export type Strike = { icon: string; guess: number}
+export type Strike = { icon: string; guess: string}
 
 export default function Strikes({ strikes }: { strikes: Strike[] }) {
   return (
