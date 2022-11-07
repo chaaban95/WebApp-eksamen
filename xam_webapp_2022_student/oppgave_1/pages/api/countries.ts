@@ -1,6 +1,7 @@
 // TODO: Her er det bugs
-
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+import { countries } from '../../data'
 
 export default async function handler(
   req: NextApiRequest,
