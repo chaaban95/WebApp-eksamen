@@ -99,17 +99,25 @@ const Home: NextPage = () => {
         <input name="filter" id="klasse" value="group" type="radio"></input>
       </section>
 
-      {Object?.values(filteredData)?.map((student) =>
-        student.map((st) => (
-          <ul key={st.id}>
-            <li>{st.id}</li>
-            <li>{st.name}</li>
-            <li>{st.age}</li>
-            <li>{st.gender}</li>
-            <li>{st.group}</li>
-          </ul>
-        ))
-      )}
+      <>
+        {Object?.entries(filteredData)?.map(([key, student]) => {
+          return (
+            <>
+              {<h2>Gruppering etter: {key}</h2>}
+              {student.map((st) => (
+                <ul key={st.id}>
+                  <li>{st.id}</li>
+                  <li>{st.name}</li>
+                  <li>{st.age}</li>
+                  <li>{st.gender}</li>
+                  <li>{st.group}</li>
+                </ul>
+              ))}
+              {<span className="count">Antall: {student.length}</span>}
+            </>
+          )
+        })}
+      </>
 
       {vis &&
         data?.students
