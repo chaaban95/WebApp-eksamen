@@ -113,7 +113,7 @@ const Home: NextPage = () => {
                   <li>{st.group}</li>
                 </ul>
               ))}
-              {<span className="count">Antall: {student.length}</span>}
+              {<h2 className="count">Antall: {student.length}</h2>}
             </>
           )
         })}
