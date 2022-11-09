@@ -52,7 +52,7 @@ export const useGame = () => {
   const handleGuess = (letter: string) => {
     if (!country?.name?.toLowerCase().includes(letter.toLowerCase())) {
       strikes.shift()
-      strikes.push({ icon: '🚫', guess: '1' })
+      strikes.push({ icon: '🚫', guess: '' })
     }
     setGuesses((prev: string[]) => [...prev, letter.toLowerCase()])
   }
