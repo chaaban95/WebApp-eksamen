@@ -14,6 +14,7 @@ export default function handler(
     case 'post':
       async function main() {
         let employees: Prisma.EmployeeCreateInput[] = employeesData
+        // let weeks: Prisma.WeekCreateInput[] = lunchData.year
 
         await Promise.all(
           employees.map(async (employee) => {
@@ -22,6 +23,14 @@ export default function handler(
             })
           })
         )
+
+        // await Promise.all(
+        //   weeks.map(async (week) => {
+        //     await prisma.week.create({
+        //       data: week,
+        //     })
+        //   })
+        // )
       }
 
       main()
@@ -38,7 +47,7 @@ export default function handler(
         status: true,
         data: {
           method: req.method,
-          message: 'Employees have been added!',
+          message: 'Data has been added!',
         },
       })
 
