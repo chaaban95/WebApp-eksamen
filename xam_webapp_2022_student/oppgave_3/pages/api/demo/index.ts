@@ -11,7 +11,7 @@ export default function handler(
   res: NextApiResponse<any>
 ) {
   switch (req.method?.toLowerCase()) {
-    case 'post':
+    case 'get':
       async function main() {
         let employees: Prisma.EmployeeCreateInput[] = employeesData
         // let weeks: Prisma.WeekCreateInput[] = lunchData.year
