@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { getStudents } from '../api/students'
+import RadioNav from '../components/RadioNav'
 
 const Home: NextPage = () => {
   const [status, setStatus] = useState('idle')
@@ -81,24 +82,7 @@ const Home: NextPage = () => {
 
   return (
     <main>
-      <h1>Student gruppering</h1>
-      <section onChange={handleChange}>
-        <label htmlFor="ingen">Ingen</label>
-        <input
-          name="filter"
-          id="ingen"
-          value="ingen"
-          type="radio"
-          defaultChecked
-        ></input>
-        <label htmlFor="alder">Alder</label>
-        <input name="filter" id="alder" value="age" type="radio"></input>
-        <label htmlFor="kjønn">Kjønn</label>
-        <input name="filter" id="kjønn" value="gender" type="radio"></input>
-        <label htmlFor="klasse">Klasse</label>
-        <input name="filter" id="klasse" value="group" type="radio"></input>
-      </section>
-
+      <RadioNav handleChange={handleChange} />
       <>
         {Object?.entries(filteredData)?.map(([key, student]) => {
           return (
