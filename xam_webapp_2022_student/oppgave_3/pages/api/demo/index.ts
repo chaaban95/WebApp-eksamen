@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { Prisma, PrismaClient } from '@prisma/client'
 
 import { employees as employeesData } from '../../../data/employees'
 import lunchData from '../../../data/lunch.json'
 
-import { Prisma, PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient({ log: ['query'] })
 
 export default function handler(
@@ -13,6 +13,7 @@ export default function handler(
   switch (req.method?.toLowerCase()) {
     case 'get':
       async function main() {
+        // Create employees
         let employees: Prisma.EmployeeCreateInput[] = employeesData
 
         await Promise.all(
@@ -22,6 +23,29 @@ export default function handler(
             })
           })
         )
+
+        // Create lunch
+        const Lunch = await prisma.lunch.create({
+          data: {},
+        })
+
+        // For loop for getting week and creating week in db.
+        // for (const weeks of Object.values(lunchData.year)) {
+        //   const week = await prisma.week.create({
+        //     data: {
+        //       week: week,
+        //     },
+        //   })
+        // }
+
+        // const weeks = Object.entries(lunchData.year)
+
+        // const createWeek = await prisma.week.create({
+        //   data: {
+        //     id: ,
+        //     week: 1
+        //   },
+        // })
       }
 
       main()
