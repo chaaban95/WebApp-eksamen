@@ -14,7 +14,6 @@ export default function handler(
     case 'get':
       async function main() {
         let employees: Prisma.EmployeeCreateInput[] = employeesData
-        // let weeks: Prisma.WeekCreateInput[] = lunchData.year
 
         await Promise.all(
           employees.map(async (employee) => {
@@ -23,14 +22,6 @@ export default function handler(
             })
           })
         )
-
-        // await Promise.all(
-        //   weeks.map(async (week) => {
-        //     await prisma.week.create({
-        //       data: week,
-        //     })
-        //   })
-        // )
       }
 
       main()
