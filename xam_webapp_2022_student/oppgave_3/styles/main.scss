@@ -20,9 +20,54 @@ h1 {
 }
 
 .uker {
-  text-align: center;
-  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
   background-color: cornflowerblue;
   color: cornsilk;
   box-shadow: 0 3px 9px rgb(6 6 6 / 0.2);
+}
+
+.uker:hover {
+  scale: 1.1;
+}
+
+.sec2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.inSec {
+  min-height: 300px;
+  background-color: cornflowerblue;
+  color: cornsilk;
+  text-align: center;
+  box-shadow: 0 3px 9px rgb(6 6 6 / 0.2);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inSec h2 {
+  background-color: rgb(6 6 6 / 0.5);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+a {
+  background-color: rgb(6 6 6 / 0.3);
+  padding: 10px 0;
+}
+
+a:hover {
+  background-color: rgb(6 6 6 / 0.4);
+}
+
+.dager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px 40px;
 }

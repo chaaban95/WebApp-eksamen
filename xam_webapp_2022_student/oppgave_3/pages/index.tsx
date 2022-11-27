@@ -16,28 +16,37 @@ const Home: NextPage = () => {
     setButtonText(!buttonText)
   }
 
+  const active = { backgroundColor: 'rgb(6 6 6 / 0.4)' }
+  const inactive = {}
+
   return (
     <main>
       <h1>Lunsjkalender</h1>
       <UkerNav />
-      {Object?.entries(data.year)?.map(([key, value]) => {
-        return (
-          <div key={key}>
-            {<h2>Uke {key}</h2>}
-            <button value={key} onClick={(event) => handleClick(event, key)}>
-              {tempData == key && buttonText ? 'Lukk dager' : 'Se dager'}
-            </button>
-            {visible && tempData == key
-              ? Object?.entries(value.week).map(([key, value]) => (
-                  <ul key={key}>
-                    <li> {key}</li>
-                    <li>{value?.name}</li>
-                  </ul>
-                ))
-              : null}
-          </div>
-        )
-      })}
+      <section className="sec2">
+        {Object?.entries(data.year)?.map(([key, value]) => {
+          return (
+            <div className="inSec" key={key}>
+              {<h2>Uke {key}</h2>}
+              <a
+                style={visible && tempData == key ? active : inactive}
+                value={key}
+                onClick={(event) => handleClick(event, key)}
+              >
+                {tempData == key && buttonText ? 'Lukk dager' : 'Se dager'}
+              </a>
+              {visible && tempData == key
+                ? Object?.entries(value.week).map(([key, value]) => (
+                    <ul className="dager" key={key}>
+                      <li> {key}</li>
+                      <li>{value?.name}</li>
+                    </ul>
+                  ))
+                : null}
+            </div>
+          )
+        })}
+      </section>
     </main>
   )
 }
