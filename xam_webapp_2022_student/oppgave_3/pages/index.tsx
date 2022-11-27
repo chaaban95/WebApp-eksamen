@@ -1,13 +1,22 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
-import Pokemons from '../components/Pokemons'
 import data from '../data/lunch.json'
 
 const Home: NextPage = () => {
   const [visible, setVisible] = useState(false)
-  const handleClick = () => {
+  const [tempData, setTempData] = useState('')
+  const [buttonText, setButtonText] = useState(false)
+
+  const handleClick = (event, key) => {
+    console.log('key index', key)
+    console.log(event.target.value)
+    console.log(event.target.innetText)
+
+    setTempData(key)
     setVisible(!visible)
+    setButtonText(!buttonText)
   }
+
   return (
     <main>
       <h1>Lunsjkalender</h1>
@@ -21,14 +30,17 @@ const Home: NextPage = () => {
         return (
           <>
             {<h2 key={key}>Uke {key}</h2>}
-            <button onClick={handleClick}>Se dager</button>
-            {visible &&
-              Object?.entries(value.week).map(([key, value]) => (
-                <ul key={key}>
-                  <li> {key}</li>
-                  <li>{value?.name}</li>
-                </ul>
-              ))}
+            <button value={key} onClick={(event) => handleClick(event, key)}>
+              {tempData == key && buttonText ? 'Lukk dager' : 'Se dager'}
+            </button>
+            {visible && tempData == key
+              ? Object?.entries(value.week).map(([key, value]) => (
+                  <ul key={key}>
+                    <li> {key}</li>
+                    <li>{value?.name}</li>
+                  </ul>
+                ))
+              : null}
           </>
         )
       })}
