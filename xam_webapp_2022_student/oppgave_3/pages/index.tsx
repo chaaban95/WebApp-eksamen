@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
+import UkerNav from '../components/UkerNav'
 import data from '../data/lunch.json'
 
 const Home: NextPage = () => {
@@ -18,16 +19,11 @@ const Home: NextPage = () => {
   return (
     <main>
       <h1>Lunsjkalender</h1>
-      <h2>Uker</h2>
-      {Object?.entries(data.year)?.map(([key]) => (
-        <span key={key}>
-          <span>{key}</span>
-        </span>
-      ))}
+      <UkerNav />
       {Object?.entries(data.year)?.map(([key, value]) => {
         return (
-          <>
-            {<h2 key={key}>Uke {key}</h2>}
+          <div key={key}>
+            {<h2>Uke {key}</h2>}
             <button value={key} onClick={(event) => handleClick(event, key)}>
               {tempData == key && buttonText ? 'Lukk dager' : 'Se dager'}
             </button>
@@ -39,7 +35,7 @@ const Home: NextPage = () => {
                   </ul>
                 ))
               : null}
-          </>
+          </div>
         )
       })}
     </main>
