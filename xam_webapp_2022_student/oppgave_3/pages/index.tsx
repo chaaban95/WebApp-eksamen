@@ -8,9 +8,7 @@ const Home: NextPage = () => {
   const [buttonText, setButtonText] = useState(false)
 
   const handleClick = (event, key) => {
-    console.log('key index', key)
     console.log(event.target.value)
-    console.log(event.target.innetText)
 
     setTempData(key)
     setVisible(!visible)
