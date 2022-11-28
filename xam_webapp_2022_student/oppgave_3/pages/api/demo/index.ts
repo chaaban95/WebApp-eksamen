@@ -12,24 +12,33 @@ export default function handler(
 ) {
   async function main() {
     // Create employees
-    employees.map(async (employee) => {
-      await prisma.employee.create({
-        data: employee,
-      })
-    })
-
-    // Create lunch
-    // Object?.entries(lunch.year)?.map(async ([key, value]) => {
-    //   await prisma.lunch.create({
-    //     data:
+    // employees.map(async (employee) => {
+    //   await prisma.employee.create({
+    //     data: employee,
     //   })
+    // })
+    // Create lunch
+    // const keys = Object.keys(lunch.year)
+    // await prisma.lunch.create({
+    //   data: {},
     // })
     // Create weeks
     // Object?.entries(lunch.year)?.map(async ([key, value]) => {
     //   Object?.entries(value.week)?.map(async ([key2, value2]) => {
     //     await prisma.week.create({
-    //       data: {},
+    //       data: {
+    //         week: {
+    //           key,
+    //           lunch: {
+    //             create: {
+    //               keys
+    //             }
+    //           }
+    //         },
+    //       },
     //     })
+    //     await prisma.day.create({
+    //       data: key2,
     //   })
     // })
   }
