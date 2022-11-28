@@ -11,33 +11,28 @@ export default function handler(
   res: NextApiResponse<any>
 ) {
   async function main() {
-    // Create employees
+    // Create employees IKKE SLETT - DET VIRKER
     // employees.map(async (employee) => {
     //   await prisma.employee.create({
     //     data: employee,
     //   })
     // })
-    // Create lunch
-    // await prisma.lunch.create({
-    //   data: {},
+    // Create lunch IKKE SLETT - DET VIRKER
+    // Object?.entries(lunch.year)?.map(async ([key, value]) => {
+    //   await prisma.lunch.create({
+    //     data: {},
+    //   })
     // })
     // Create weeks
-    // Object?.entries(lunch.year)?.map(async ([key, value]) => {
-    //   Object?.entries(value.week)?.map(async ([key2, value2]) => {
+    // Object?.entries(lunch.year)?.map(async ([key2, value2]) => {
+    //   Object?.entries(value2.week)?.map(async ([key3, value3]) => {
     //     await prisma.week.create({
     //       data: {
-    //         week: {
-    //           value,
-    //           lunch: {
-    //             connect: {
-    //               id: value2?.id,
-    //             },
-    //           },
+    //         week: Number(key2),
+    //         lunch: {
+    //           connect: {},
     //         },
     //       },
-    //     })
-    //     await prisma.day.create({
-    //       data: ,
     //     })
     //   })
     // })
