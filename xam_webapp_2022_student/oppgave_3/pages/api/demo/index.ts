@@ -18,28 +18,28 @@ export default function handler(
     //   })
     // })
     // Create lunch
-    await prisma.lunch.create({
-      data: {},
-    })
-
+    // await prisma.lunch.create({
+    //   data: {},
+    // })
     // Create weeks
-    Object?.entries(lunch.year)?.map(async ([key, value]) => {
-      Object?.entries(value.week)?.map(async ([key2, value2]) => {
-        await prisma.week.create({
-          data: {
-            week: {
-              key,
-              lunch: {
-                connect: {
-                  key
-                }
-              }
-            },
-          },
-        })
-        await prisma.day.create({
-          data: key2,
-      })
+    // Object?.entries(lunch.year)?.map(async ([key, value]) => {
+    //   Object?.entries(value.week)?.map(async ([key2, value2]) => {
+    //     await prisma.week.create({
+    //       data: {
+    //         week: {
+    //           value,
+    //           lunch: {
+    //             connect: {
+    //               id: value2?.id,
+    //             },
+    //           },
+    //         },
+    //       },
+    //     })
+    //     await prisma.day.create({
+    //       data: ,
+    //     })
+    //   })
     // })
   }
 
