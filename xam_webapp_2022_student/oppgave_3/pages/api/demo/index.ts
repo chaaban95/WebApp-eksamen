@@ -18,10 +18,8 @@ export default function handler(
     //   })
     // })
     // Create lunch IKKE SLETT - DET VIRKER
-    // Object?.entries(lunch.year)?.map(async ([key, value]) => {
-    //   await prisma.lunch.create({
-    //     data: {},
-    //   })
+    // await prisma.lunch.create({
+    //   data: {},
     // })
     // Create weeks
     // Object?.entries(lunch.year)?.map(async ([key2, value2]) => {
