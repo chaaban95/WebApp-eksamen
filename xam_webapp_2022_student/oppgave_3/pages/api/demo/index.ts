@@ -28,27 +28,27 @@ export default function handler(
       data: {},
     })
 
-    // Create weeks
+    // Create weeks VIRKER DELVIS (får ikke alle uker)
     Object?.entries(lunch.year)?.map(async ([key, value]) => {
-      Object?.entries(value.week)?.map(async ([key2, value2]) => {
-        const createWeek = await prisma.week.create({
-          data: {
-            week: Number(key),
-            lunch: {
-              connect: { id: crateLunch.id },
-            },
+      const createWeek = await prisma.week.create({
+        data: {
+          week: Number(key),
+          lunch: {
+            connect: { id: crateLunch.id },
           },
-        })
-
-        // const createDay = await prisma.week.create({
-        //   data: {
-        //     day: ,
-        //     // week: {
-        //     //   connect: { id: },
-        //     // },
-        //   },
-        // })
+        },
       })
+      // Create days
+      // Object?.entries(value.week)?.map(async ([key2, value2]) => {
+      //   const createDay = await prisma.week.create({
+      //     data: {
+      //       day: ,
+      //       week: {
+      //         connect: { id: },
+      //       },
+      //     },
+      //   })
+      // })
     })
   }
 
