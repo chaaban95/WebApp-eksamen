@@ -38,17 +38,20 @@ export default function handler(
           },
         },
       })
-      // Create days
-      // Object?.entries(value.week)?.map(async ([key2, value2]) => {
-      //   const createDay = await prisma.week.create({
-      //     data: {
-      //       day: ,
-      //       week: {
-      //         connect: { id: },
-      //       },
-      //     },
-      //   })
-      // })
+      // Create days VIRKER DELVIS
+      Object?.entries(value.week)?.map(async ([key2, value2]) => {
+        const createDay = await prisma.day.create({
+          data: {
+            name: key2,
+            week: {
+              connect: { id: createWeek.id },
+            },
+            employee: {
+              connect: { id: value2?.id },
+            },
+          },
+        })
+      })
     })
   }
 
