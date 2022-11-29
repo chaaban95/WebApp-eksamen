@@ -11,29 +11,45 @@ export default function handler(
   res: NextApiResponse<any>
 ) {
   async function main() {
+    await prisma.day.deleteMany({})
+    await prisma.week.deleteMany({})
+    await prisma.lunch.deleteMany({})
+    await prisma.employee.deleteMany({})
+
     // Create employees IKKE SLETT - DET VIRKER
-    // employees.map(async (employee) => {
-    //   await prisma.employee.create({
-    //     data: employee,
-    //   })
-    // })
+    employees.map(async (employee) => {
+      await prisma.employee.create({
+        data: employee,
+      })
+    })
+
     // Create lunch IKKE SLETT - DET VIRKER
-    // await prisma.lunch.create({
-    //   data: {},
-    // })
+    const crateLunch = await prisma.lunch.create({
+      data: {},
+    })
+
     // Create weeks
-    // Object?.entries(lunch.year)?.map(async ([key2, value2]) => {
-    //   Object?.entries(value2.week)?.map(async ([key3, value3]) => {
-    //     await prisma.week.create({
-    //       data: {
-    //         week: Number(key2),
-    //         lunch: {
-    //           connect: {},
-    //         },
-    //       },
-    //     })
-    //   })
-    // })
+    Object?.entries(lunch.year)?.map(async ([key, value]) => {
+      Object?.entries(value.week)?.map(async ([key2, value2]) => {
+        const createWeek = await prisma.week.create({
+          data: {
+            week: Number(key),
+            lunch: {
+              connect: { id: crateLunch.id },
+            },
+          },
+        })
+
+        // const createDay = await prisma.week.create({
+        //   data: {
+        //     day: ,
+        //     // week: {
+        //     //   connect: { id: },
+        //     // },
+        //   },
+        // })
+      })
+    })
   }
 
   main()
