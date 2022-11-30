@@ -22,7 +22,7 @@ export default function handler(
       })
     })
 
-    const crateLunch = await prisma.lunch.create({ data: {} })
+    const createLunch = await prisma.lunch.create({ data: {} })
 
     for (const [key, value] of Object.entries(lunch.year)) {
       const createWeek = await prisma.week.create({
@@ -30,7 +30,7 @@ export default function handler(
           week: Number(key),
           lunch: {
             connect: {
-              id: crateLunch.id,
+              id: createLunch.id,
             },
           },
         },
