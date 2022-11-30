@@ -24,7 +24,7 @@ export default function handler(
     })
 
     // Create lunch IKKE SLETT - DET VIRKER
-    const crateLunch = await prisma.lunch.create({
+    const createLunch = await prisma.lunch.create({
       data: {},
     })
 
@@ -34,7 +34,7 @@ export default function handler(
         data: {
           week: Number(key),
           lunch: {
-            connect: { id: crateLunch.id },
+            connect: { id: createLunch.id },
           },
         },
       })
