@@ -8,20 +8,17 @@ import prisma from '../../../lib/db'
 
 // const prisma = new PrismaClient({ log: ['query'] })
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
+export default async function handler(req, res) {
   await prisma.day.deleteMany({})
   await prisma.week.deleteMany({})
   await prisma.lunch.deleteMany({})
   await prisma.employee.deleteMany({})
 
-  employees.map(async (employee) => {
+  for (const employee of employees) {
     await prisma.employee.create({
       data: employee,
     })
-  })
+  }
 
   const createLunch = await prisma.lunch.create({ data: {} })
 
