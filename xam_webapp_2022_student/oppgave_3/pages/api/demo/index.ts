@@ -1,12 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { Prisma, PrismaClient } from '@prisma/client'
-
 import { employees } from '../../../data/employees'
 import lunch from '../../../data/lunch.json'
 
 import prisma from '../../../lib/db'
-
-// const prisma = new PrismaClient({ log: ['query'] })
 
 export default async function handler(req, res) {
   await prisma.day.deleteMany({})

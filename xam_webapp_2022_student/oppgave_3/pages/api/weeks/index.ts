@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient, Prisma } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import weeks from '../../../data/lunch.json'
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,9 +7,6 @@ export default async function handler(
 ) {
   switch (req.method?.toLowerCase()) {
     case 'get':
-
-      const weeks = await prisma.week.findMany()
-
       return res.status(200).json({
         status: true,
         data: { method: req.method, resources: '/weeks/index', weeks },
