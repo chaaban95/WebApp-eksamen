@@ -16,43 +16,46 @@ export default function handler(
     await prisma.lunch.deleteMany({})
     await prisma.employee.deleteMany({})
 
-    // Create employees IKKE SLETT - DET VIRKER
     employees.map(async (employee) => {
       await prisma.employee.create({
         data: employee,
       })
     })
 
-    // Create lunch IKKE SLETT - DET VIRKER
-    const crateLunch = await prisma.lunch.create({
-      data: {},
-    })
+    const crateLunch = await prisma.lunch.create({ data: {} })
 
-    // Create weeks VIRKER DELVIS (får ikke alle uker)
-    Object?.entries(lunch.year)?.map(async ([key, value]) => {
+    for (const [key, value] of Object.entries(lunch.year)) {
       const createWeek = await prisma.week.create({
         data: {
           week: Number(key),
           lunch: {
-            connect: { id: crateLunch.id },
+            connect: {
+              id: crateLunch.id,
+            },
           },
         },
       })
-      // Create days VIRKER DELVIS
-      Object?.entries(value.week)?.map(async ([key2, value2]) => {
-        const createDay = await prisma.day.create({
-          data: {
-            name: key2,
-            week: {
-              connect: { id: createWeek.id },
+
+      for (const [key2, value2] of Object.entries(value.week)) {
+        if (value2) {
+          await prisma.day.create({
+            data: {
+              name: key2,
+              week: {
+                connect: {
+                  id: createWeek.id,
+                },
+              },
+              employee: {
+                connect: {
+                  id: value2?.id,
+                },
+              },
             },
-            employee: {
-              connect: { id: value2?.id },
-            },
-          },
-        })
-      })
-    })
+          })
+        }
+      }
+    }
   }
 
   main()
