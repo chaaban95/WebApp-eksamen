@@ -8,8 +8,11 @@ export default async function handler(
   if (req.method === 'GET') {
     const { id } = req.query
 
-    const employee =
-      await prisma.$queryRaw`SELECT * FROM employee WHERE id = ${id}`
+    const employee = await prisma.employee.findUnique({
+      where: {
+        id: Number(id),
+      },
+    })
 
     return res.status(200).json({ success: true, employee })
   } else {
