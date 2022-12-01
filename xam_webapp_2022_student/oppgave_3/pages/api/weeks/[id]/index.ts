@@ -10,7 +10,7 @@ export default async function handler(
       const { id } = req.query
 
       // Does not work not sure why??
-      // const week = await prisma.week.findUnique({
+      // const week = await prisma.week.findMany({
       //   where: {
       //     week: id,
       //   },
@@ -18,7 +18,17 @@ export default async function handler(
 
       // Todo: get the right data
       // Using raw raw queries instead
-      const days = await prisma.$queryRaw`SELECT name, employeeId as employee FROM day WHERE weekId = ${id}`
+      // const days =
+      //  await prisma.$queryRaw`SELECT name, employeeId as employee FROM day WHERE weekId = ${id}`
+
+      const days = await prisma.week.findMany({
+        where: {
+          week: Number(id),
+        },
+        include: {
+          day: true,
+        },
+      })
 
       return res.status(200).json({
         status: true,
