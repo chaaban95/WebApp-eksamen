@@ -1,6 +1,8 @@
 import { employees } from '../../../data/employees'
 import lunch from '../../../data/lunch.json'
 
+import prisma from '../../../lib/db'
+
 export default async function handler(req, res) {
   await prisma.day.deleteMany({})
   await prisma.week.deleteMany({})
