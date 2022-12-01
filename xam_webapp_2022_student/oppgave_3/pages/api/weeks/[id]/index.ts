@@ -9,30 +9,36 @@ export default async function handler(
     case 'get':
       const { id } = req.query
 
-      // This works dont touch..
+      // Works needs polishing
       // const days = await prisma.week.findMany({
       //   where: {
       //     week: Number(id),
       //   },
       //   include: {
-      //     day: true,
+      //     day: {
+      //       select: {
+      //         name: true,
+      //         employee: true,
+      //       },
+      //     },
       //   },
       // })
 
-
-      // DONT TOUCH - PROGRESS HERE
-      // const days = await prisma.week.findMany({
-      //   where: {
-      //     week: Number(id),
-      //   },
-      //   select: {
-      //     week: true,
-
-      //   },
-      //   include: {
-      //     employee
-      //   }
-      // })
+      const days = await prisma.week.findMany({
+        where: {
+          week: Number(id),
+        },
+        select: {
+          week: true,
+          day: {
+            select: {
+              id: true,
+              name: true,
+              employee: true,
+            },
+          },
+        },
+      })
 
       return res.status(200).json({
         status: true,
