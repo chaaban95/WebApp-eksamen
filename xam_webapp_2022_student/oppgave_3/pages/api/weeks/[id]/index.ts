@@ -16,15 +16,16 @@ export default async function handler(
       //   },
       // })
 
+      // Todo: get the right data
       // Using raw raw queries instead
-      const week = await prisma.$queryRaw`SELECT * FROM week WHERE week = ${id}`
+      const days = await prisma.$queryRaw`SELECT * FROM day WHERE weekId = ${id}`
 
       return res.status(200).json({
         status: true,
         data: {
           method: req.method,
-          resources: 'api/weeks/${id}',
-          data: week,
+          resources: 'api/weeks/',
+          data: days,
         },
       })
 
