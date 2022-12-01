@@ -1,6 +1,7 @@
 import { getWeeks } from '../../api/weeks'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function UkerNav() {
   const [data, setData] = useState({})
@@ -46,7 +47,9 @@ export default function UkerNav() {
       <section className="ukerWrapper">
         {data.weeks?.map((week) => (
           <span className="uker" key={week.week}>
-            <span>{week.week}</span>
+            <Link href={`../weeks/${week.week}`}>
+              <span>{week.week}</span>
+            </Link>
           </span>
         ))}
       </section>

@@ -74,7 +74,7 @@ const Home: NextPage = () => {
               </a>
               {visible && tempData == week.week ? (
                 <ul>
-                  <li>{week.lunchId}</li>
+                  <li>^_^</li>
                 </ul>
               ) : null}
             </div>

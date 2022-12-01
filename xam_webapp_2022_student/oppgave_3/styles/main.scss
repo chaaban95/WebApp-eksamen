@@ -32,6 +32,7 @@ h1 {
 
 .uker:hover {
   scale: 1.1;
+  cursor: pointer;
 }
 
 .sec2 {
@@ -65,10 +66,23 @@ a {
 
 a:hover {
   background-color: rgb(6 6 6 / 0.4);
+  cursor: pointer;
 }
 
 .dager {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 5px 40px;
+}
+
+.btn {
+  background-color: rgb(6 6 6 / 0.8);
+  padding: 10px 30px;
+  border-radius: 3px;
+  color: whitesmoke;
+}
+
+.btn:hover {
+  background-color: rgb(6 6 6 / 0.6);
+  cursor: pointer;
 }
