@@ -19,15 +19,20 @@ export default async function handler(
       //   },
       // })
 
-      const days = await prisma.day.findMany({
-        where: {
-          weekId: 'clb5g5o8r0002ty2o93k1i3uj',
-        },
-        include: {
-          employee: true,
-          week: true,
-        },
-      })
+
+      // DONT TOUCH - PROGRESS HERE
+      // const days = await prisma.week.findMany({
+      //   where: {
+      //     week: Number(id),
+      //   },
+      //   select: {
+      //     week: true,
+
+      //   },
+      //   include: {
+      //     employee
+      //   }
+      // })
 
       return res.status(200).json({
         status: true,
