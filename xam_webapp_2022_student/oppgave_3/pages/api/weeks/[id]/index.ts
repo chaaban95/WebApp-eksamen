@@ -24,7 +24,7 @@ export default async function handler(
         data: {
           method: req.method,
           resources: 'api/weeks/${id}',
-          data: week,
+          week,
         },
       })
 

@@ -1,10 +1,14 @@
-import { getWeeks } from '../api/weeks'
+import { getWeeks } from '../../api/weeks'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function UkerNav() {
   const [data, setData] = useState({})
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState()
+
+  const router = useRouter()
+  const { id } = router.query
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -41,7 +45,7 @@ export default function UkerNav() {
       <h2>Uker</h2>
       <section className="ukerWrapper">
         {data.weeks?.map((week) => (
-          <span className="uker" key={week.id}>
+          <span className="uker" key={week.week}>
             <span>{week.week}</span>
           </span>
         ))}

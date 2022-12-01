@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
-import UkerNav from '../components/UkerNav'
 import { getWeeks } from '../api/weeks'
+import UkerNav from './weeks'
 
 const Home: NextPage = () => {
   const [visible, setVisible] = useState(false)
@@ -56,8 +56,8 @@ const Home: NextPage = () => {
     <main>
       <h1>Lunsjkalender</h1>
       <UkerNav />
-      {/* <p>{JSON.stringify(data.weeks.map((week) => week.week))}</p> */}
-
+      <p>{JSON.stringify(data)}</p>
+      {/* <p>{JSON.stringify(data.weeks.map((week) => week.id))}</p> */}
       <section className="sec2">
         {data.weeks?.map((week) => {
           return (
@@ -65,21 +65,18 @@ const Home: NextPage = () => {
               {<h2>Uke {week.week}</h2>}
               <a
                 style={visible && tempData == week.week ? active : inactive}
-                value={week.id}
+                value={week.week}
                 onClick={(event) => handleClick(event, week.week)}
               >
                 {tempData == week.week && buttonText
                   ? 'Lukk dager'
                   : 'Se dager'}
               </a>
-              {/* {visible && tempData == week.id
-                ? week.lunch.map((lunch) => (
-                    <ul className="dager" key={lunch.id}>
-                      <li> {lunch.id}</li>
-                      <li>{lunch.name}</li>
-                    </ul>
-                  ))
-                : null} */}
+              {visible && tempData == week.week ? (
+                <ul>
+                  <li>{week.lunchId}</li>
+                </ul>
+              ) : null}
             </div>
           )
         })}
