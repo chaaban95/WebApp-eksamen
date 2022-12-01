@@ -6,11 +6,34 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   if (req.method === 'GET') {
-    // const weeks = await prisma.$queryRaw` SELECT week, day[] FROM Week`
+    // Working example DO NOT REMOVE
+    // const weeks = await prisma.week.findMany({
+    //   select: {
+    //     week: true,
+    //     day: {
+    //       select: {
+    //         name: true,
+    //         employee: {
+    //           select: {
+    //             id: true,
+    //             name: true,
+    //           }
+    //         }
+    //       },
+    //     },
+    //   },
+    // })
 
     const weeks = await prisma.week.findMany({
-      include: {
-        day: true,
+      select: {
+        week: true,
+        day: {
+          select: {
+            id: true,
+            name: true,
+            employee: true,
+          },
+        },
       },
     })
 
