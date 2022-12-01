@@ -10,8 +10,13 @@ export default async function handler(
       const { id } = req.query
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Does not work not sure why??
       // const week = await prisma.week.findMany({
+=======
+      // This works dont touch..
+      // const days = await prisma.week.findMany({
+>>>>>>> 5cded7ba462b900956cbfc7295ffb03a4c078b15
 =======
       // This works dont touch..
       // const days = await prisma.week.findMany({
@@ -25,6 +30,7 @@ export default async function handler(
       // })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Todo: get the right data
       // Using raw raw queries instead
       // const days =
@@ -37,6 +43,8 @@ export default async function handler(
         include: {
           day: true,
 =======
+=======
+>>>>>>> 5cded7ba462b900956cbfc7295ffb03a4c078b15
       const days = await prisma.day.findMany({
         where: {
           weekId: 'clb5g5o8r0002ty2o93k1i3uj',
@@ -44,6 +52,9 @@ export default async function handler(
         include: {
           employee: true,
           week: true,
+<<<<<<< HEAD
+>>>>>>> 5cded7ba462b900956cbfc7295ffb03a4c078b15
+=======
 >>>>>>> 5cded7ba462b900956cbfc7295ffb03a4c078b15
         },
       })
