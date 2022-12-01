@@ -9,13 +9,22 @@ export default async function handler(
     case 'get':
       const { id } = req.query
 
+<<<<<<< HEAD
       // Does not work not sure why??
       // const week = await prisma.week.findMany({
+=======
+      // This works dont touch..
+      // const days = await prisma.week.findMany({
+>>>>>>> 5cded7ba462b900956cbfc7295ffb03a4c078b15
       //   where: {
-      //     week: id,
+      //     week: Number(id),
+      //   },
+      //   include: {
+      //     day: true,
       //   },
       // })
 
+<<<<<<< HEAD
       // Todo: get the right data
       // Using raw raw queries instead
       // const days =
@@ -27,6 +36,15 @@ export default async function handler(
         },
         include: {
           day: true,
+=======
+      const days = await prisma.day.findMany({
+        where: {
+          weekId: 'clb5g5o8r0002ty2o93k1i3uj',
+        },
+        include: {
+          employee: true,
+          week: true,
+>>>>>>> 5cded7ba462b900956cbfc7295ffb03a4c078b15
         },
       })
 
@@ -34,7 +52,7 @@ export default async function handler(
         status: true,
         data: {
           method: req.method,
-          resources: 'api/weeks/',
+          resources: 'api/weeks/[id]',
           data: days,
         },
       })
