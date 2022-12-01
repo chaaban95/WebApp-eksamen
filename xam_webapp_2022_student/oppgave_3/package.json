@@ -8,15 +8,15 @@
     "start": "next start",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "prisma:init": "prisma init", 
-    "prisma:migrate": "prisma migrate dev", 
-    "prisma:generate": "prisma generate", 
-    "prisma:seed": "prisma db seed", 
-    "prisma:push": "prisma db push", 
+    "prisma:init": "prisma init",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "prisma db seed",
+    "prisma:push": "prisma db push",
     "seed": "node prisma/seed.js"
   },
   "dependencies": {
-    "@prisma/client": "4.5.0",
+    "@prisma/client": "^4.5.0",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"

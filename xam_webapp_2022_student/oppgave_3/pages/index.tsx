@@ -56,8 +56,13 @@ const Home: NextPage = () => {
     <main>
       <h1>Lunsjkalender</h1>
       <UkerNav />
+<<<<<<< Updated upstream
       <p>{JSON.stringify(data)}</p>
       {/* <p>{JSON.stringify(data.weeks.map((week) => week.id))}</p> */}
+=======
+      <p>{JSON.stringify(data.weeks.map((week) => week.lunchId))}</p>
+
+>>>>>>> Stashed changes
       <section className="sec2">
         {data.weeks?.map((week) => {
           return (
@@ -74,9 +79,21 @@ const Home: NextPage = () => {
               </a>
               {visible && tempData == week.week ? (
                 <ul>
+<<<<<<< Updated upstream
                   <li>^_^</li>
                 </ul>
               ) : null}
+=======
+                  <li>{week.lunchId}</li>
+                </ul>
+              ) : // ? week.lunch.map((lunch) => (
+              //     <ul className="dager" key={lunch.id}>
+              //       <li> {lunch.id}</li>
+              //       <li>{lunch.name}</li>
+              //     </ul>
+              //   ))
+              null}
+>>>>>>> Stashed changes
             </div>
           )
         })}

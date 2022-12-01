@@ -16,6 +16,7 @@ export default async function handler(
       //   },
       // })
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
       // Using raw raw queries instead
@@ -30,11 +31,16 @@ export default async function handler(
       // Using raw raw queries instead
       const days = await prisma.$queryRaw`SELECT * FROM day WHERE weekId = ${id}`
 >>>>>>> 74614da67d42c63cf0501adef09db94b1bf27ab9
+=======
+      // Using raw raw queries instead
+      const week = await prisma.$queryRaw`SELECT * FROM week WHERE week = ${id}`
+>>>>>>> Stashed changes
 
       return res.status(200).json({
         status: true,
         data: {
           method: req.method,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
           resources: 'api/weeks/${id}',
@@ -47,6 +53,10 @@ export default async function handler(
           resources: 'api/weeks/',
           data: days,
 >>>>>>> 74614da67d42c63cf0501adef09db94b1bf27ab9
+=======
+          resources: 'api/weeks/${id}',
+          data: week,
+>>>>>>> Stashed changes
         },
       })
 
