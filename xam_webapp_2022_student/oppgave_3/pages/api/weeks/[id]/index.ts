@@ -24,7 +24,7 @@ export default async function handler(
       //   },
       // })
 
-      const days = await prisma.week.findMany({
+      const week = await prisma.week.findMany({
         where: {
           week: Number(id),
         },
@@ -45,7 +45,7 @@ export default async function handler(
         data: {
           method: req.method,
           resources: 'api/weeks/[id]',
-          data: days,
+          week,
         },
       })
 
