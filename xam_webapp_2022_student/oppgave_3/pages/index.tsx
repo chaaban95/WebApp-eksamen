@@ -41,10 +41,10 @@ const Home: NextPage = () => {
     return <p>Noe gikk galt..</p>
   }
 
-  const handleClick = (event, key) => {
-    console.log(key)
+  const handleClick = (event, week) => {
+    console.log(week)
 
-    setTempData(key)
+    setTempData(week)
     setVisible(!visible)
     setButtonText(!buttonText)
   }
@@ -56,20 +56,6 @@ const Home: NextPage = () => {
     <main>
       <h1>Lunsjkalender</h1>
       <UkerNav />
-      {/* <p>{JSON.stringify(data.weeks)}</p> */}
-      {/* <p>{JSON.stringify(data?.weeks.map((week) =>{ week.week}))}</p> */}
-      {/* <p>
-        {JSON.stringify(
-          data?.weeks?.map((week) => {
-            week.day?.map((days) => {
-              {
-                days.employee
-              }
-            })
-          })
-        )}
-      </p> */}
-
       <section className="sec2">
         {data?.weeks?.map((week) => {
           return (
@@ -85,12 +71,12 @@ const Home: NextPage = () => {
                   : 'Se dager'}
               </a>
               {visible && tempData == week.week ? (
-                week.day ? (
-                  <p>Fri</p>
+                week.day.length < 1 ? (
+                  <p>Fri ^_^</p>
                 ) : (
                   week.day.map((day) => (
                     <ul className="dager" key={day.id}>
-                      <li> {day.name}</li>
+                      <li>{day.name}:</li>
                       <li>{day.employee.name}</li>
                     </ul>
                   ))
