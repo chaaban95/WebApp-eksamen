@@ -29,6 +29,7 @@ h1 {
   color: cornsilk;
   box-shadow: 0 3px 9px rgb(6 6 6 / 0.2);
   text-shadow: 1px 1px 2px #666;
+  border-radius: 2px;
 }
 
 .uker:hover {
@@ -53,6 +54,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
+  margin-bottom: 50px;
 }
 
 .inSec {
@@ -101,4 +103,10 @@ a:hover {
 .btn:hover {
   background-color: rgb(6 6 6 / 0.6);
   cursor: pointer;
+}
+
+.sec2 {
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
