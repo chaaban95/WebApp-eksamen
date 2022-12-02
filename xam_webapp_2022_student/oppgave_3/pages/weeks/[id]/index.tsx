@@ -19,9 +19,10 @@ export default function UkerNav() {
     const handler = async () => {
       setStatus('loading')
       try {
-        const result = await getWeeks({})
+        const result = await fetch(`../../api/weeks/${id}`)
+        const data = await result.json()
         setStatus('success')
-        setData(result)
+        setData(data)
       } catch (error) {
         setStatus('error')
         setError(error as any)
@@ -44,6 +45,22 @@ export default function UkerNav() {
   return (
     <main>
       <h2>Uke: {id}</h2>
+      <div className="ukeWrapper">
+        {data?.week?.map((days) =>
+          days.day.length < 1 ? (
+            <p>Fri dag</p>
+          ) : (
+            days.day.map((dag) => {
+              return (
+                <ul className="uke" key={dag.id}>
+                  <li>{dag.name}</li>
+                  <li>{dag.employee.name}</li>
+                </ul>
+              )
+            })
+          )
+        )}
+      </div>
       <Link href="/">
         <i className="btn">Tilbake</i>
       </Link>

@@ -14,7 +14,7 @@ h1 {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 40px 0;
   justify-content: flex-start;
   align-items: center;
 }
@@ -34,6 +34,19 @@ h1 {
 .uker:hover {
   scale: 1.1;
   cursor: pointer;
+}
+
+.ukeWrapper {
+  margin-top: 30px;
+  display: flex;
+  gap: 50px;
+  font-size: 18px;
+}
+
+.uke {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sec2 {
@@ -79,10 +92,10 @@ a:hover {
 .btn {
   display: inline-block;
   margin-top: 40px;
-  background-color: rgb(6 6 6 / 0.8);
+  background-color: cornflowerblue;
   padding: 10px 30px;
   border-radius: 3px;
-  color: whitesmoke;
+  color: cornsilk;
 }
 
 .btn:hover {
