@@ -5,7 +5,7 @@ export const create = async (data: any) => {
   // bruker try/catch for å håndtere feil gitt av Prisma
   try {
     // bruker prisma clienten til å lage en ansatt
-    const employee = await prisma.employee.create(data)
+    const employee = await prisma.employee.create({ data })
 
     return { success: true, data: employee }
   } catch (error) {

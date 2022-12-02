@@ -5,7 +5,7 @@
 Table Employee {
   id Int [pk, increment]
   name String [not null]
-  rules String [not null]
+  rules String [not null, default: '*']
   day Day [not null]
 }
 

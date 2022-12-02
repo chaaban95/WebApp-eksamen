@@ -14,7 +14,7 @@ generator dbml {
 model Employee {
   id    Int    @id @default(autoincrement())
   name  String
-  rules String
+  rules String @default("*")
   day   Day[]
 }
 

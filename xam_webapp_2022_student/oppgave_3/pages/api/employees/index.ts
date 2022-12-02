@@ -31,11 +31,11 @@ export default async function handler(
       break
     case 'post':
       // kaller på kontrolleren som brukes til å lage ny ansatt
-      await employeeController.createEmployee(req, res) //<------------- Må testes
+      await employeeController.createEmployee(req, res) //<------------- Fungerer
       break
     case 'put':
       // Kaller på kontrolleren som brukes for å oppdatere eksisterende ansatt
-      await employeeController.updateEmployee(req, res) // <--------- Ikke laget
+      await employeeController.updateEmployee(req, res) // <--------- Ikke laget TODO
     default:
       // gir 405 Method Not Allowed hvis brukeren prøver på noe annet
       // enn POST
