@@ -12,6 +12,22 @@ export default async function handler(
       where: {
         id: Number(id),
       },
+      select: {
+        id: true,
+        name: true,
+        day: {
+          select: {
+            id: true,
+            name: true,
+            week: {
+              select: {
+                id: true,
+                week: true,
+              },
+            },
+          },
+        },
+      },
     })
 
     return res.status(200).json({ success: true, employee })
