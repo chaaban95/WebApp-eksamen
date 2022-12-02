@@ -19,10 +19,12 @@ export default function UkerNav() {
     const handler = async () => {
       setStatus('loading')
       try {
-        const result = await fetch(`../../api/weeks/${id}`)
-        const data = await result.json()
-        setStatus('success')
-        setData(data)
+        if (id) {
+          const result = await fetch(`../../api/weeks/${id}`)
+          const data = await result.json()
+          setStatus('success')
+          setData(data)
+        }
       } catch (error) {
         setStatus('error')
         setError(error as any)
@@ -32,7 +34,7 @@ export default function UkerNav() {
       }
     }
     handler()
-  }, [])
+  }, [id])
 
   if (isLoading) {
     return <p>Henter data..</p>
