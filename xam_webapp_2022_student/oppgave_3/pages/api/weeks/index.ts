@@ -6,24 +6,6 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   if (req.method === 'GET') {
-    // Working example DO NOT REMOVE
-    // const weeks = await prisma.week.findMany({
-    //   select: {
-    //     week: true,
-    //     day: {
-    //       select: {
-    //         name: true,
-    //         employee: {
-    //           select: {
-    //             id: true,
-    //             name: true,
-    //           }
-    //         }
-    //       },
-    //     },
-    //   },
-    // })
-
     const weeks = await prisma.week.findMany({
       select: {
         week: true,
