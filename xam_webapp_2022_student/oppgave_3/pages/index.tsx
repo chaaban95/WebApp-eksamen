@@ -57,8 +57,19 @@ const Home: NextPage = () => {
       <h1>Lunsjkalender</h1>
       <UkerNav />
       {/* <p>{JSON.stringify(data.weeks)}</p> */}
-      {/* <p>{JSON.stringify(data?.weeks?.map((week) => week.day))}</p> */}
-      {/* <p>{JSON.stringify(data.weeks.map((week) => week.lunchId))}</p> */}
+      {/* <p>{JSON.stringify(data?.weeks.map((week) =>{ week.week}))}</p> */}
+      {/* <p>
+        {JSON.stringify(
+          data?.weeks?.map((week) => {
+            week.day?.map((days) => {
+              {
+                days.employee
+              }
+            })
+          })
+        )}
+      </p> */}
+
       <section className="sec2">
         {data?.weeks?.map((week) => {
           return (
@@ -73,14 +84,18 @@ const Home: NextPage = () => {
                   ? 'Lukk dager'
                   : 'Se dager'}
               </a>
-              {visible && tempData == week.week
-                ? week.day.map((day) => (
+              {visible && tempData == week.week ? (
+                week.day ? (
+                  <p>Fri</p>
+                ) : (
+                  week.day.map((day) => (
                     <ul className="dager" key={day.id}>
                       <li> {day.name}</li>
-                      <li>{day.employee}</li>
+                      <li>{day.employee.name}</li>
                     </ul>
                   ))
-                : null}
+                )
+              ) : null}
             </div>
           )
         })}
