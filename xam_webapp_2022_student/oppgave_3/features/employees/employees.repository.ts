@@ -29,7 +29,7 @@ export const update = async (id: any, name: any) => {
   }
 }
 
-// Se om en ansatt med gitt ID eksisterer
+// Se om en ansatt med gitt ID eksisterer i databasen
 export const exist = async (id: any) => {
   try {
     const employee = await prisma.employee.findUnique({
