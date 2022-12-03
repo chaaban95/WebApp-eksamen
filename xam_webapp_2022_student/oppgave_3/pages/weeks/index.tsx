@@ -41,12 +41,12 @@ export default function UkerNav() {
     <>
       <h2 className="mrgTp">Uker</h2>
       <section className="ukerWrapper">
-        {data.weeks?.map((week) => (
-          <span className="uker" key={week.week}>
-            <Link href={`../weeks/${week.week}`}>
+        {data.weeks?.map((week: any) => (
+          <Link key={week.week} href={`../weeks/${week.week}`}>
+            <span className="uker">
               <span>{week.week}</span>
-            </Link>
-          </span>
+            </span>
+          </Link>
         ))}
       </section>
     </>

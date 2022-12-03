@@ -42,7 +42,7 @@ const Home: NextPage = () => {
     return <p>Noe gikk galt..</p>
   }
 
-  const handleClick = (event, week) => {
+  const handleClick = (event: any, week: any) => {
     console.log(week)
 
     setTempData(week)
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
       </nav>
       <UkerNav />
       <section className="sec2">
-        {data?.weeks?.map((week) => {
+        {data?.weeks?.map((week: any) => {
           return (
             <div className="inSec" key={week.id}>
               {<h2>Uke {week.week}</h2>}
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
                 week.day.length < 1 ? (
                   <p>Fri ^_^</p>
                 ) : (
-                  week.day.map((day) => (
+                  week.day.map((day: any) => (
                     <ul className="dager" key={day.id}>
                       <li>{day.name}:</li>
                       <li>{day.employee.name}</li>
