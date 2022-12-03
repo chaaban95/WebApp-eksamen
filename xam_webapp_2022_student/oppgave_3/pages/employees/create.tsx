@@ -14,8 +14,8 @@ export default function Create() {
       return
     }
 
-    if (name.length < 4 || name.length > 24) {
-      setError('Navnet må være mellom 4 og 24 tegn')
+    if (name.length < 3 || name.length > 23) {
+      setError('Navnet må være mellom 3 og 23 tegn')
       return
     }
 
