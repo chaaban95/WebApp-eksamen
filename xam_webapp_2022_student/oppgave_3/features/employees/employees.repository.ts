@@ -12,18 +12,25 @@ export const create = async (data: any) => {
 }
 
 // TODO:Oppdatere ansatt med en gitt id fra databasen
-export const update = async (id: number) => {
+export const update = async (id: any, name: any) => {
   try {
-    const employee = await prisma.employee.update({ data })
+    const employee = await prisma.employee.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+      },
+    })
 
     return { success: true, data: employee }
   } catch (error) {
-    return { success: false, error: 'Failed creating employee.' }
+    return { success: false, error: 'Failed updating employee name.' }
   }
 }
 
 // Se om en ansatt med gitt ID eksisterer
-export const exist = async (id: number) => {
+export const exist = async (id: any) => {
   try {
     const employee = await prisma.employee.findUnique({
       where: {

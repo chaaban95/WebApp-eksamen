@@ -39,17 +39,22 @@ export const createEmployee = async (req: any, res: any) => {
 
 // For å oppdatere en ansatt IKKE FERDIG
 export const updateEmployee = async (req: any, res: any) => {
-  const { id } = req.body
+  const { id, name } = req.body
+  // const { name } = req.body
 
-  // 400 Bad Request hvis ansatt navn mangler
+  // 400 Bad Request hvis ansatt mangler id
   if (!id)
     return res
       .status(400)
       .json({ success: false, error: 'Missing required field: id' })
 
-  const updatedEmployee = await employeesService.update({
-    id,
-  })
+  // 400 Bad Request hvis ansatt mangler navn
+  if (!name)
+    return res
+      .status(400)
+      .json({ success: false, error: 'Missing required field: name' })
+
+  const updatedEmployee = await employeesService.update(id, name)
 
   // 500 Internal Server Error hvis noe går galt
   if (!updatedEmployee?.success) {

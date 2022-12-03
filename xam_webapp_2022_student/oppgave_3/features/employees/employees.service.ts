@@ -12,7 +12,8 @@ export const create = async (name: any) => {
 }
 
 // Update
-export const update = async (id: any) => {
+export const update = async (id: any, name: any) => {
+  // Se om ansatt eksisterer
   const employee = await employeesRepository.exist(id)
 
   // feil med hentingen av data fra databasen via ORM
@@ -22,7 +23,7 @@ export const update = async (id: any) => {
   if (!employee.data)
     return { success: false, error: 'Employee does not exist.' }
 
-  const updatedEmployee = await employeesRepository.update(id)
+  const updatedEmployee = await employeesRepository.update(id, name)
 
   // feil ved lagring av ansatt via ORM
   if (!updatedEmployee.success)
