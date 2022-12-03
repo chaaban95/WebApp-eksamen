@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Create() {
@@ -8,8 +9,13 @@ export default function Create() {
     e.preventDefault()
     setError('')
 
+    if (name.length == 0) {
+      setError('Navn mangler!')
+      return
+    }
+
     if (name.length < 4 || name.length > 24) {
-      setError('Name must be between 4 and 24 characters')
+      setError('Navnet må være mellom 4 og 24 tegn')
       return
     }
 
@@ -27,7 +33,7 @@ export default function Create() {
         if (res.error) {
           setError(res.error)
         } else {
-          window.location.href = './index'
+          window.location.href = '../employees'
         }
       })
   }
@@ -45,6 +51,9 @@ export default function Create() {
         <button type="submit">Lage</button>
       </form>
       <p>{error}</p>
+      <Link href="../employees">
+        <i className="btn">Tilbake</i>
+      </Link>
     </main>
   )
 }
