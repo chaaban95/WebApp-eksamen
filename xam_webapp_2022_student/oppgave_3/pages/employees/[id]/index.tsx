@@ -65,7 +65,10 @@ export default function Dag() {
         ))
       )}
       <Link href="../../employees">
-        <i className="btn">Tilbake</i>
+        <i className="btn mrgRt">Tilbake</i>
+      </Link>
+      <Link href={`../../employees/${id}/edit`}>
+        <i className="btn">Edit</i>
       </Link>
     </main>
   )

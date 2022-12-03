@@ -1,9 +1,13 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Update() {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
+
+  const router = useRouter()
+  const { id } = router.query
 
   const submit = (e: any) => {
     e.preventDefault()
@@ -14,8 +18,8 @@ export default function Update() {
       return
     }
 
-    if (name.length < 4 || name.length > 24) {
-      setError('Navnet må være mellom 4 og 24 tegn')
+    if (name.length < 3 || name.length > 23) {
+      setError('Navnet må være mellom 3 og 23 tegn')
       return
     }
 
@@ -52,7 +56,7 @@ export default function Update() {
         <button type="submit">Oppdatere</button>
       </form>
       <p>{error}</p>
-      <Link href="../employees">
+      <Link href={`../../employees/${id}`}>
         <i className="btn">Tilbake</i>
       </Link>
     </main>
