@@ -1,8 +1,8 @@
-import { getWeeks } from '../../api/weeks'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { getEmployees } from '../../api/employees'
 
-export default function UkerNav() {
+export default function Employees() {
   const [data, setData] = useState({})
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState()
@@ -15,7 +15,7 @@ export default function UkerNav() {
     const handler = async () => {
       setStatus('loading')
       try {
-        const result = await getWeeks({})
+        const result = await getEmployees({})
         setStatus('success')
         setData(result)
       } catch (error) {
@@ -38,17 +38,28 @@ export default function UkerNav() {
   }
 
   return (
-    <>
-      <h2 className="mrgTp">Uker</h2>
-      <section className="ukerWrapper">
-        {data.weeks?.map((week) => (
-          <span className="uker" key={week.week}>
-            <Link href={`../weeks/${week.week}`}>
-              <span>{week.week}</span>
-            </Link>
-          </span>
+    <main>
+      <nav className="navAnsatter">
+        <h2 className="mrgBtm">Ansatter</h2>
+        <ul>
+          <Link href={'/'}>
+            <li className="btn2">Til Hjemmeside</li>
+          </Link>
+          <Link href={'../employees/create'}>
+            <li className="btn2">Ny ansatt</li>
+          </Link>
+        </ul>
+      </nav>
+      <hr />
+      <section className="ansatter">
+        {data.employees?.map((employee) => (
+          <p className="ansatt" key={employee.id}>
+            {/* <Link href={`../weeks/${week.week}`}> */}
+            <span>{employee.name}</span>
+            {/* </Link> */}
+          </p>
         ))}
       </section>
-    </>
+    </main>
   )
 }

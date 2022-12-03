@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getWeeks } from '../api/weeks'
 import UkerNav from './weeks'
@@ -55,6 +56,11 @@ const Home: NextPage = () => {
   return (
     <main>
       <h1>Lunsjkalender</h1>
+      <nav className="navForside">
+        <Link href={'../employees'}>
+          <div className="btn">Til Ansatte</div>
+        </Link>
+      </nav>
       <UkerNav />
       <section className="sec2">
         {data?.weeks?.map((week) => {

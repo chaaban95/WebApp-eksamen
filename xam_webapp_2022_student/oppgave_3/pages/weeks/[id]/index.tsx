@@ -1,9 +1,8 @@
-import { getWeeks } from '../../../api/weeks'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-export default function UkerNav() {
+export default function Uke() {
   const [data, setData] = useState({})
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState()
