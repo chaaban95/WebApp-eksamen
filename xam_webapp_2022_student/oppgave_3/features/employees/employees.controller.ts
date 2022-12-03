@@ -49,8 +49,8 @@ export const createEmployee = async (req: any, res: any) => {
 
 // For å oppdatere navnet til en ansatt
 export const updateEmployee = async (req: any, res: any) => {
-  const { id, name } = req.body
-  // const { name } = req.body
+  const { id } = req.query
+  const { name } = req.body
 
   // 400 Bad Request hvis ansatt mangler id
   if (!id)
