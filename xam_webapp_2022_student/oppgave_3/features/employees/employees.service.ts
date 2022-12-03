@@ -1,6 +1,17 @@
 import * as employeesRepository from './employees.repository'
 
-// Create
+// getAll
+export const getAll = async () => {
+  const gotAllEmployees = await employeesRepository.getAll()
+
+  // feil ved henting av ansatte ORM
+  if (!gotAllEmployees.success)
+    return { success: false, error: gotAllEmployees.error }
+
+  return { success: true, employees: gotAllEmployees.employees }
+}
+
+// create
 export const create = async (name: any) => {
   const createdEmployee = await employeesRepository.create(name)
 
@@ -11,7 +22,7 @@ export const create = async (name: any) => {
   return { success: true, data: createdEmployee.data }
 }
 
-// Update
+// update
 export const update = async (id: any, name: any) => {
   // Se om ansatt eksisterer
   const employee = await employeesRepository.exist(id)

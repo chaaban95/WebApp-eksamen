@@ -1,5 +1,15 @@
 import prisma from '../../lib/db'
 
+export const getAll = async () => {
+  try {
+    const employees = await prisma.employee.findMany()
+
+    return { success: true, employees }
+  } catch (error) {
+    return { success: false, error: 'Failed collecting employees.' }
+  }
+}
+
 // Legge til ansatt i databasen
 export const create = async (data: any) => {
   try {

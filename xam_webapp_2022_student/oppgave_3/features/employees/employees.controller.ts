@@ -3,8 +3,18 @@ import * as employeesService from './employees.service'
 // For å vise alle ansatte
 export const getAllEmployees = async (req: any, res: any) => {
   {
-    const employees = await prisma.employee.findMany()
-    return res.status(200).json({ success: true, employees })
+    // 400 Bad Request hvis det eksisterer ingen ansatte <---- TODO: Validering ikke ferdiglagd
+
+    // if (!gotAllEmployees)
+    // return res
+    //   .status(400)
+    //   .json({ success: false, error: 'Missing required field: name' })
+
+    const gotAllEmployees = await employeesService.getAll()
+
+    return res
+      .status(200)
+      .json({ success: true, employees: gotAllEmployees.employees })
   }
 }
 

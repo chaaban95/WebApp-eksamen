@@ -52,12 +52,12 @@ export default function Employees() {
       </nav>
       <hr />
       <section className="ansatter">
-        {data.employees?.map((employee) => (
-          <p className="ansatt" key={employee.id}>
-            {/* <Link href={`../weeks/${week.week}`}> */}
-            <span>{employee.name}</span>
-            {/* </Link> */}
-          </p>
+        {data.employees?.map((employee: any) => (
+          <Link key={employee.id} href={`../employees/${employee.id}`}>
+            <ul className="ansatt">
+              <li>{employee.name}</li>
+            </ul>
+          </Link>
         ))}
       </section>
     </main>
