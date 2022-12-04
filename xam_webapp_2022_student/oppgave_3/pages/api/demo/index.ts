@@ -1,9 +1,12 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { employees } from '../../../data/employees'
 import lunch from '../../../data/lunch.json'
-
 import prisma from '../../../lib/db'
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>
+) {
   await prisma.day.deleteMany({})
   await prisma.week.deleteMany({})
   await prisma.lunch.deleteMany({})

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../lib/db'
+import prisma from '../../../../lib/db'
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +10,9 @@ export default async function handler(
 
     const days = await prisma.employee.findMany({
       where: {
-        name: String(name),
+        name: {
+          startsWith: String(name),
+        },
       },
       select: {
         id: true,
