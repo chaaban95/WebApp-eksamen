@@ -1,9 +1,8 @@
-export default function Filter({}: any) {
+export default function Filter({ search }: any) {
   return (
     <>
-      <form className="search">
+      <form className="search" onSubmit={search}>
         <input
-          className="inSearch"
           id="search"
           name="search"
           type="search"
