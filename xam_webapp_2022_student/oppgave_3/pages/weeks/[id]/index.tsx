@@ -47,11 +47,11 @@ export default function Uke() {
     <main>
       <h2>Uke: {id}</h2>
       <div className="ukeWrapper">
-        {data?.week?.map((days) =>
+        {data?.week?.map((days: any) =>
           days.day.length < 1 ? (
             <p>Fri dag</p>
           ) : (
-            days.day.map((dag) => {
+            days.day.map((dag: any) => {
               return (
                 <ul className="uke" key={dag.id}>
                   <li>{dag.name}</li>
