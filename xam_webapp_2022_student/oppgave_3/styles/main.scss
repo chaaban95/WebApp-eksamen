@@ -6,10 +6,6 @@ main {
   padding: 20px 25px;
 }
 
-h1 {
-  margin-bottom: 30px;
-}
-
 .ukerWrapper {
   display: flex;
   gap: 10px;
@@ -48,7 +44,6 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
 }
 
 .sec2 {
@@ -94,12 +89,13 @@ a:hover {
 }
 
 .btn {
+  border: none;
   display: inline-block;
-  margin: 20px 0px;
   background-color: cornflowerblue;
-  padding: 10px 30px;
+  padding: 10px 25px;
   border-radius: 3px;
   color: cornsilk;
+  transition: background-color 0.2s;
 }
 
 .btn:hover {
@@ -107,8 +103,17 @@ a:hover {
   cursor: pointer;
 }
 
+.btn:active {
+  transform: scale(0.96);
+}
+
 .ansatter {
   margin-top: 30px;
+  font-size: 18px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .ansatt {
@@ -119,6 +124,7 @@ a:hover {
 }
 
 .navAnsatter {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -132,23 +138,12 @@ a:hover {
 
 .navForside {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mrgTp {
   margin-top: 30px;
-}
-
-.btn2 {
-  background-color: cornflowerblue;
-  padding: 10px 25px;
-  border-radius: 3px;
-  color: cornsilk;
-}
-
-.btn2:hover {
-  background-color: rgb(6 6 6 / 0.6);
-  cursor: pointer;
 }
 
 form {
@@ -161,9 +156,17 @@ form {
   margin-right: 20px;
 }
 
+.ansattWrapper {
+  margin-bottom: 30px;
+}
+
 .ansvar {
   display: flex;
   gap: 20px;
+}
+
+.feedback {
+  margin-top: 5px;
 }
 
 .sec2 {

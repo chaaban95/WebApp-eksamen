@@ -50,25 +50,27 @@ export default function Dag() {
       <h2>Ansatt: {id}</h2>
       <h2>Navn: {data?.employee?.name}</h2>
       <h3 className="mrgTp">Ansvarlig for:</h3>
-      {data?.employee?.day?.length < 1 ? (
-        <p>Ingen</p>
-      ) : (
-        data?.employee?.day.map((dag: any) => (
-          <div className="ansvar" key={dag.id}>
-            <p>
-              <strong> Uke nr.:</strong> {dag.week.week}
-            </p>
-            <p>
-              <strong>Dag:</strong> {dag.name}
-            </p>
-          </div>
-        ))
-      )}
+      <div className="ansattWrapper">
+        {data?.employee?.day?.length < 1 ? (
+          <p>Ingen</p>
+        ) : (
+          data?.employee?.day.map((dag: any) => (
+            <div className="ansvar" key={dag.id}>
+              <p>
+                <strong> Uke nr.:</strong> {dag.week.week}
+              </p>
+              <p>
+                <strong>Dag:</strong> {dag.name}
+              </p>
+            </div>
+          ))
+        )}
+      </div>
       <Link href="../../employees">
         <i className="btn mrgRt">Tilbake</i>
       </Link>
       <Link href={`../../employees/${id}/update`}>
-        <i className="btn">Endre Navn</i>
+        <i className="btn">Bytte ansatt</i>
       </Link>
     </main>
   )

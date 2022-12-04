@@ -55,10 +55,10 @@ const Home: NextPage = () => {
 
   return (
     <main>
-      <h1>Lunsjkalender</h1>
       <nav className="navForside">
+        <h1>Lunsjkalender</h1>
         <Link href={'../employees'}>
-          <div className="btn">Til Ansatte</div>
+          <button className="btn">Til Ansatte</button>
         </Link>
       </nav>
       <UkerNav />

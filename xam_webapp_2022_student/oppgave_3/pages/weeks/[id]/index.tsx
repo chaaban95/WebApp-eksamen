@@ -63,7 +63,7 @@ export default function Uke() {
         )}
       </div>
       <Link href="/">
-        <i className="btn">Tilbake</i>
+        <i className="btn mrgTp">Tilbake</i>
       </Link>
     </main>
   )

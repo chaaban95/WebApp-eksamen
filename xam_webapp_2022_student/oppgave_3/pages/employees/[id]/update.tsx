@@ -52,12 +52,13 @@ export default function Update() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-
-        <button type="submit">Oppdatere</button>
+        <button className="btn" type="submit">
+          Oppdatere
+        </button>
+        <p className="feedback">{error}</p>
       </form>
-      <p>{error}</p>
       <Link href={`../../employees/${id}`}>
-        <i className="btn">Tilbake</i>
+        <i className="btn mrgTp">Tilbake</i>
       </Link>
     </main>
   )

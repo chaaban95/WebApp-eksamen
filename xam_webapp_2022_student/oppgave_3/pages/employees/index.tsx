@@ -43,14 +43,14 @@ export default function Employees() {
         <h2 className="mrgBtm">Ansatter</h2>
         <ul>
           <Link href={'/'}>
-            <li className="btn2">Til Hjemmeside</li>
+            <li className="btn">Til Hjemmeside</li>
           </Link>
           <Link href={'../employees/create'}>
-            <li className="btn2">Ny ansatt</li>
+            <li className="btn">Ny ansatt</li>
           </Link>
         </ul>
       </nav>
-      <hr />
+      <hr className="mrgTp" />
       <section className="ansatter">
         {data.employees?.map((employee: any) => (
           <Link key={employee.id} href={`../employees/${employee.id}`}>

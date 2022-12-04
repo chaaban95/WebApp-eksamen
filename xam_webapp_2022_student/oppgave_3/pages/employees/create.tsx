@@ -47,12 +47,13 @@ export default function Create() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-
-        <button type="submit">Lage</button>
+        <button className="btn" type="submit">
+          Lage
+        </button>
       </form>
       <p>{error}</p>
       <Link href="../employees">
-        <i className="btn">Tilbake</i>
+        <i className="btn mrgTp">Tilbake</i>
       </Link>
     </main>
   )
