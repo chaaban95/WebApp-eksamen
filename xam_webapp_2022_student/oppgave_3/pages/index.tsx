@@ -12,6 +12,8 @@ const Home: NextPage = () => {
   const [data, setData] = useState({})
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState()
+  const [searchFilter, setSearchFilter] = useState('')
+  const [filteredData, setFilteredData] = useState({})
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -52,6 +54,20 @@ const Home: NextPage = () => {
   const active = { backgroundColor: 'rgb(6 6 6 / 0.4)' }
   const inactive = {}
 
+  const search = async (event: any) => {
+    event.preventDefault()
+    setSearchFilter(event.target.value)
+    let response = await fetch(`./api/search/${searchFilter}`)
+    let data = await response.text()
+    setFilteredData(data)
+    console.log(data)
+  }
+
+  let filtered = []
+
+  searchFilter ? (filtered = filteredData) : (filtered = data)
+  console.log(filtered)
+
   return (
     <main>
       <nav className="navForside">
@@ -61,9 +77,13 @@ const Home: NextPage = () => {
         </Link>
       </nav>
       <UkerNav />
-      <Filter />
+      <Filter
+        search={search}
+        searchFilter={searchFilter}
+        setSearchFilter={setSearchFilter}
+      />
       <section className="sec2">
-        {data?.weeks?.map((week: any) => {
+        {filtered?.weeks?.map((week: any) => {
           return (
             <div className="inSec" key={week.id}>
               {<h2>Uke {week.week}</h2>}
@@ -91,6 +111,7 @@ const Home: NextPage = () => {
             </div>
           )
         })}
+        {filtered?.length < 1 && <p>Ingen ansatt</p>}
       </section>
     </main>
   )
