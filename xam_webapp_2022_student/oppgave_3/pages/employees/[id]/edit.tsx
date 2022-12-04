@@ -23,7 +23,7 @@ export default function Update() {
       return
     }
 
-    fetch('../../api/employees/update', {
+    fetch(`../../api/employees/${id}/update`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export default function Update() {
         if (res.error) {
           setError(res.error)
         } else {
-          window.location.href = '../employees'
+          window.location.href = `../../employees/${id}/`
         }
       })
   }
