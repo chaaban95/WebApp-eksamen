@@ -33,6 +33,10 @@ main {
   cursor: pointer;
 }
 
+.uker:active {
+  scale: 1;
+}
+
 .ukeWrapper {
   margin-top: 30px;
   display: flex;
