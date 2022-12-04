@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getWeeks } from '../api/weeks'
+import Filter from '../components/Filter'
 import UkerNav from './weeks'
 
 const Home: NextPage = () => {
@@ -43,8 +44,6 @@ const Home: NextPage = () => {
   }
 
   const handleClick = (event: any, week: any) => {
-    console.log(week)
-
     setTempData(week)
     setVisible(!visible)
     setButtonText(!buttonText)
@@ -62,6 +61,7 @@ const Home: NextPage = () => {
         </Link>
       </nav>
       <UkerNav />
+      <Filter />
       <section className="sec2">
         {data?.weeks?.map((week: any) => {
           return (

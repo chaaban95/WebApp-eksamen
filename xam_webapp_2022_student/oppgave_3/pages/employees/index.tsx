@@ -40,7 +40,7 @@ export default function Employees() {
   return (
     <main>
       <nav className="navAnsatter">
-        <h2 className="mrgBtm">Ansatter</h2>
+        <h2>Ansatter</h2>
         <ul>
           <Link href={'/'}>
             <li className="btn">Til Hjemmeside</li>
