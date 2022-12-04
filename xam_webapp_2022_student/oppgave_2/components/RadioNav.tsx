@@ -1,4 +1,4 @@
-export default function RadioNav({ handleChange }) {
+export default function RadioNav({ handleChange }: any) {
   return (
     <>
       <h1>Student gruppering</h1>

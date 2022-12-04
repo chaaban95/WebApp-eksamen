@@ -40,14 +40,14 @@ const Home: NextPage = () => {
     return <p>Noe gikk galt..</p>
   }
 
-  function handleChange(event) {
+  function handleChange(event: any) {
     if (event?.target.value == 'ingen') {
       setVis(true)
       setFilteredData({})
     }
 
     if (event?.target.value == 'age') {
-      const result = data.students.reduce((gStudents, sStudent) => {
+      const result = data.students.reduce((gStudents: any, sStudent: any) => {
         if (gStudents[sStudent.age] == null) gStudents[sStudent.age] = []
         gStudents[sStudent.age].push(sStudent)
         return gStudents
@@ -58,7 +58,7 @@ const Home: NextPage = () => {
     }
 
     if (event?.target.value == 'gender') {
-      const result = data.students.reduce((gStudents, sStudent) => {
+      const result = data.students.reduce((gStudents: any, sStudent: any) => {
         if (gStudents[sStudent.gender] == null) gStudents[sStudent.gender] = []
         gStudents[sStudent.gender].push(sStudent)
         return gStudents
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
     }
 
     if (event?.target.value == 'group') {
-      const result = data.students.reduce((gStudents, sStudent) => {
+      const result = data.students.reduce((gStudents: any, sStudent: any) => {
         if (gStudents[sStudent.group] == null) gStudents[sStudent.group] = []
         gStudents[sStudent.group].push(sStudent)
         return gStudents
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
           return (
             <>
               {<h2>Gruppering etter: {key}</h2>}
-              {student.map((st) => (
+              {student?.map((st: any) => (
                 <ul key={st.id}>
                   <li>{st.id}</li>
                   <li>{st.name}</li>
@@ -97,7 +97,7 @@ const Home: NextPage = () => {
                   <li>{st.group}</li>
                 </ul>
               ))}
-              {<h2 className="count">Antall: {student.length}</h2>}
+              {<h2 className="count">Antall: {student?.length}</h2>}
             </>
           )
         })}
@@ -105,8 +105,8 @@ const Home: NextPage = () => {
 
       {vis &&
         data?.students
-          ?.sort((a, b) => (a.name > b.name ? 1 : -1))
-          .map((student) => (
+          ?.sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
+          .map((student: any) => (
             <ul key={student.id}>
               <li>{student.id}</li>
               <li>{student.name}</li>
