@@ -88,7 +88,7 @@ export default function Employees() {
             </ul>
           </Link>
         ))}
-        {filtered?.employees?.length < 1 && <p>Ingen ansatte</p>}
+        {filtered?.employees?.length < 1 && <p>Ingen treff</p>}
       </section>
     </main>
   )
