@@ -35,11 +35,19 @@ const Home: NextPage = () => {
   }, [])
 
   if (isLoading) {
-    return <p>Henter data..</p>
+    return (
+      <main>
+        <p>Henter data..</p>
+      </main>
+    )
   }
 
   if (isError) {
-    return <p>Noe gikk galt..</p>
+    return (
+      <main>
+        <p>Noe gikk galt..</p>
+      </main>
+    )
   }
 
   const handleClick = (event: any, week: any) => {

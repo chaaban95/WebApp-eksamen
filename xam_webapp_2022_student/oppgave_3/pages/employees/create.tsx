@@ -4,6 +4,9 @@ import { useState } from 'react'
 export default function Create() {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
+  const [status, setStatus] = useState('idle')
+
+  const isSuccess = status === 'success'
 
   const submit = (e: any) => {
     e.preventDefault()
@@ -33,9 +36,20 @@ export default function Create() {
         if (res.error) {
           setError(res.error)
         } else {
-          window.location.href = '../employees'
+          setStatus('success')
+          setTimeout(() => {
+            window.location.href = '../employees'
+          }, 2000)
         }
       })
+  }
+
+  if (isSuccess) {
+    return (
+      <main>
+        <p>Vellykket, omdiriger til forrige side, vennligst vent..</p>
+      </main>
+    )
   }
 
   return (

@@ -5,9 +5,12 @@ import { useRouter } from 'next/router'
 export default function Update() {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
+  const [status, setStatus] = useState('idle')
 
   const router = useRouter()
   const { id } = router.query
+
+  const isSuccess = status === 'success'
 
   const submit = (e: any) => {
     e.preventDefault()
@@ -38,9 +41,20 @@ export default function Update() {
         if (res.error) {
           setError(res.error)
         } else {
-          window.location.href = `../../employees/${id}/`
+          setStatus('success')
+          setTimeout(() => {
+            window.location.href = `../../employees/${id}/`
+          }, 2000)
         }
       })
+  }
+
+  if (isSuccess) {
+    return (
+      <main>
+        <p>Vellykket, omdiriger til forrige side, vennligst vent..</p>
+      </main>
+    )
   }
 
   return (
