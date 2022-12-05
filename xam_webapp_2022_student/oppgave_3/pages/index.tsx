@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getWeeks } from '../api/weeks'
+import Filter from '../components/Filter'
 import UkerNav from './weeks'
 
 const Home: NextPage = () => {
@@ -11,6 +12,10 @@ const Home: NextPage = () => {
   const [data, setData] = useState({})
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState()
+  const [filterState, setFilterState] = useState('')
+  const [filterState2, setFilterState2] = useState('')
+  const [filteredData, setFilteredData] = useState({})
+  const [isClick, setClick] = useState(false)
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -59,6 +64,26 @@ const Home: NextPage = () => {
   const active = { backgroundColor: 'rgb(6 6 6 / 0.4)' }
   const inactive = {}
 
+  const filter = async (event: any) => {
+    event.preventDefault()
+    setFilterState('')
+    setFilterState2('')
+    setClick(true)
+    let response = await fetch('./api/search/period')
+    let data = await response.json()
+    setFilteredData(data)
+    console.log(data)
+  }
+
+  const reset = () => {
+    setFilteredData(data)
+  }
+
+  let filtered = []
+
+  isClick ? (filtered = filteredData) : (filtered = data)
+  console.log(filtered)
+
   return (
     <main>
       <nav className="navForside">
@@ -68,8 +93,16 @@ const Home: NextPage = () => {
         </Link>
       </nav>
       <UkerNav />
+      <Filter
+        filterState={filterState}
+        filterState2={filterState2}
+        setFilterState={setFilterState}
+        setFilterState2={setFilterState2}
+        filter={filter}
+        reset={reset}
+      />
       <section className="sec2">
-        {data?.weeks?.map((week: any) => {
+        {filtered?.weeks?.map((week: any) => {
           return (
             <div className="inSec" key={week.week}>
               {<h2>Uke {week.week}</h2>}
