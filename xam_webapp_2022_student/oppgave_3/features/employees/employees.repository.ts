@@ -2,7 +2,26 @@ import prisma from '../../lib/db'
 
 export const getAll = async () => {
   try {
-    const employees = await prisma.employee.findMany()
+    // const employees = await prisma.employee.findMany()
+
+    const employees = await prisma.employee.findMany({
+      select: {
+        id: true,
+        name: true,
+        day: {
+          select: {
+            id: true,
+            name: true,
+            week: {
+              select: {
+                id: true,
+                week: true,
+              },
+            },
+          },
+        },
+      },
+    })
 
     return { success: true, employees }
   } catch (error) {

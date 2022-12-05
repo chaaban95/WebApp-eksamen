@@ -8,13 +8,21 @@ export default async function handler(
   if (req.method === 'GET') {
     const { fromWeek, toWeek } = req.body
 
-    const days = await prisma.week.findMany({
-      where: {
-        name: String(name),
+    const weeks = await prisma.week.findMany({
+      where: {},
+      select: {
+        week: true,
+        day: {
+          select: {
+            id: true,
+            name: true,
+            employee: true,
+          },
+        },
       },
     })
 
-    return res.status(200).json({ success: true, days })
+    return res.status(200).json({ success: true, weeks })
   } else {
     return res.status(405).json({ success: false, error: 'Method not allowed' })
   }
