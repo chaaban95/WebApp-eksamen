@@ -63,7 +63,7 @@ const Home: NextPage = () => {
       <section className="sec2">
         {data?.weeks?.map((week: any) => {
           return (
-            <div className="inSec" key={week.id}>
+            <div className="inSec" key={week.week}>
               {<h2>Uke {week.week}</h2>}
               <a
                 style={visible && tempData == week.week ? active : inactive}

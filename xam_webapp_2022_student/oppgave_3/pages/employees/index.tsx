@@ -9,6 +9,7 @@ export default function Employees() {
   const [error, setError] = useState()
   const [searchFilter, setSearchFilter] = useState('')
   const [filteredData, setFilteredData] = useState({})
+  const [isClick, setClick] = useState(false)
 
   const isLoading = status === 'loading'
   const isError = status === 'error'
@@ -42,15 +43,21 @@ export default function Employees() {
 
   const search = async (event: any) => {
     event.preventDefault()
+    setSearchFilter('')
+    setClick(true)
     let response = await fetch(`../api/employees/search/${searchFilter}`)
     let data = await response.json()
     setFilteredData(data)
     console.log(data)
   }
 
+  const reset = () => {
+    setFilteredData(data)
+  }
+
   let filtered = []
 
-  searchFilter ? (filtered = filteredData) : (filtered = data)
+  isClick ? (filtered = filteredData) : (filtered = data)
   console.log(filtered)
 
   return (
@@ -71,6 +78,7 @@ export default function Employees() {
         search={search}
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
+        reset={reset}
       />
       <section className="ansatter">
         {filtered?.employees?.map((employee: any) => (
@@ -80,7 +88,7 @@ export default function Employees() {
             </ul>
           </Link>
         ))}
-        {filtered.length === 0 && <p>Ingen ansatte</p>}
+        {filtered?.employees?.length < 1 && <p>Ingen ansatte</p>}
       </section>
     </main>
   )
