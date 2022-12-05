@@ -42,8 +42,8 @@ export default function Employees() {
 
   const search = async (event: any) => {
     event.preventDefault()
-    let response = await fetch(`./api/search/${searchFilter}`)
-    let data = await response.text()
+    let response = await fetch(`../api/employees/search/${searchFilter}`)
+    let data = await response.json()
     setFilteredData(data)
     console.log(data)
   }
@@ -56,7 +56,7 @@ export default function Employees() {
   return (
     <main>
       <nav className="navAnsatter">
-        <h2>Ansatter</h2>
+        <h2>Ansatte</h2>
         <ul>
           <Link href={'/'}>
             <li className="btn">Til Hjemmeside</li>
@@ -80,7 +80,7 @@ export default function Employees() {
             </ul>
           </Link>
         ))}
-        {/* {filtered.days?.length < 1 && <p>Ingen ansatt</p>} */}
+        {filtered.length === 0 && <p>Ingen ansatte</p>}
       </section>
     </main>
   )

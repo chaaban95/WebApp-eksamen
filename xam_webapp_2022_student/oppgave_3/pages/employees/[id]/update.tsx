@@ -48,6 +48,7 @@ export default function Update() {
       <h2>Endre navn</h2>
       <form onSubmit={submit}>
         <input
+          className="inSearch"
           placeholder="Navn"
           value={name}
           onChange={(e) => setName(e.target.value)}

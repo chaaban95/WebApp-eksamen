@@ -43,6 +43,7 @@ export default function Create() {
       <h2>Legg til ny ansatt</h2>
       <form onSubmit={submit}>
         <input
+          className="inSearch"
           placeholder="Navn"
           value={name}
           onChange={(e) => setName(e.target.value)}

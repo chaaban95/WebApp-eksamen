@@ -70,7 +70,7 @@ export default function Dag() {
         <i className="btn mrgRt">Tilbake</i>
       </Link>
       <Link href={`../../employees/${id}/update`}>
-        <i className="btn">Bytte ansatt</i>
+        <i className="btn">Endre navn</i>
       </Link>
     </main>
   )
