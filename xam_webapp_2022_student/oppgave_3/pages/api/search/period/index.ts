@@ -6,10 +6,15 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   if (req.method === 'GET') {
-    const { fromWeek, toWeek } = req.body
+    const { gte, lte } = req.body
 
     const weeks = await prisma.week.findMany({
-      where: {},
+      where: {
+        week: {
+          gte, // Greater than or equal
+          lte, // Lower than or equal
+        },
+      },
       select: {
         week: true,
         day: {
