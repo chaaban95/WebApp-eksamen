@@ -1,4 +1,4 @@
-export default function Filter({ search, searchFilter, setSearchFilter }: any) {
+export default function Search({ search, searchFilter, setSearchFilter }: any) {
   return (
     <>
       <form className="search" onSubmit={search}>
@@ -9,7 +9,7 @@ export default function Filter({ search, searchFilter, setSearchFilter }: any) {
           type="search"
           placeholder="Søk etter navn"
           value={searchFilter}
-          onChange={search}
+          onChange={(event) => setSearchFilter(event.target.value)}
         />
         <button className="btn" type="submit">
           Søk
