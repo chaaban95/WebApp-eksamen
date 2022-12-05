@@ -156,6 +156,15 @@ form {
   margin-top: 20px;
 }
 
+.filter {
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+label {
+  align-self: center;
+}
+
 .mrgRt {
   margin-right: 20px;
 }
@@ -171,10 +180,6 @@ form {
 
 .feedback {
   margin-top: 5px;
-}
-
-.search {
-  margin-bottom: 25px;
 }
 
 .inSearch {

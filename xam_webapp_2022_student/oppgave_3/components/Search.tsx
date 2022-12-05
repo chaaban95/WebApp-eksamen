@@ -8,6 +8,7 @@ export default function Search({
     <>
       <form className="search" onSubmit={search}>
         <input
+          size="20"
           className="inSearch"
           id="search"
           name="search"

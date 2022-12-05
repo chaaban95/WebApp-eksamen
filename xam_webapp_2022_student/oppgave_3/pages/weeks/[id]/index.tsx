@@ -57,7 +57,7 @@ export default function Uke() {
       <div className="ukeWrapper">
         {data?.week?.map((days: any) =>
           days.day.length < 1 ? (
-            <p>Fri dag</p>
+            <p key={days}>Fri dag</p>
           ) : (
             days.day.map((dag: any) => {
               return (

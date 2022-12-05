@@ -8,9 +8,10 @@ export default function Filter({
 }: any) {
   return (
     <>
-      <form className="search" onSubmit={filter}>
+      <form className="filter" onSubmit={filter}>
         <label>Filtrer periode:</label>
         <input
+          size="9"
           min="1"
           max="52"
           className="inSearch"
@@ -23,6 +24,7 @@ export default function Filter({
           required
         />
         <input
+          size="9"
           min="1"
           max="52"
           className="inSearch"
