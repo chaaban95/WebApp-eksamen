@@ -70,8 +70,8 @@ export default function Update() {
         <button className="btn" type="submit">
           Oppdatere
         </button>
-        <p className="feedback">{error}</p>
       </form>
+      <p className="feedback">{error}</p>
       <Link href={`../../employees/${id}`}>
         <i className="btn mrgTp">Tilbake</i>
       </Link>
