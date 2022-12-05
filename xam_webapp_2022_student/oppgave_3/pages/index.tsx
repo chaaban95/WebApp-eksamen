@@ -69,7 +69,9 @@ const Home: NextPage = () => {
     setFilterState('')
     setFilterState2('')
     setClick(true)
-    let response = await fetch('./api/search/period')
+    let response = await fetch(
+      `./api/weeks/filter/${filterState}/${filterState2}`
+    )
     let data = await response.json()
     setFilteredData(data)
     console.log(data)
