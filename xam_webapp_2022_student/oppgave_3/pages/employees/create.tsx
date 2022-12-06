@@ -18,8 +18,9 @@ export default function Create() {
     }
 
     if (
-      name.match(/\d+/g) ||
-      name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
+      name.match(/\d+/g) || //Numbers
+      name.match(/\s/g) || //Spaces
+      name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/) //Special Characters
     ) {
       setError('Navn kan ikke inneholde tall eller spesialtegn')
       return
