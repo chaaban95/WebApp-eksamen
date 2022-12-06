@@ -8,7 +8,7 @@ export default async function handler(
   if (req.method === 'POST') {
     const employee = await employeesController.createEmployee(req, res)
 
-    return res.status(200).json({ success: true, employee })
+    return res.status(201).json({ success: true, employee })
   } else {
     return res.status(405).json({ success: false, error: 'Method not allowed' })
   }
