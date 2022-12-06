@@ -11,7 +11,7 @@ export const getAllEmployees = async (req: any, res: any) => {
   }
 }
 
-// Legge til en ansatte
+// Legge til en ansatt
 export const createEmployee = async (req: any, res: any) => {
   const { name } = req.body
 
