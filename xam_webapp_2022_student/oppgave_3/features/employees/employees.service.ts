@@ -22,7 +22,7 @@ export const create = async (name: any) => {
 
 // update
 export const update = async (id: any, name: any) => {
-  const employee = await employeesRepository.exist(id)
+  const employee = await employeesRepository.exist(Number(id))
 
   if (employee?.error) return { success: false, error: employee.error }
 

@@ -45,7 +45,7 @@ export const updateEmployee = async (req: any, res: any) => {
   if (!id)
     return res
       .status(400)
-      .json({ success: false, error: 'Missing required field: id' })
+      .json({ success: false, error: 'Missing required URL paramater: id' })
 
   if (!name)
     return res

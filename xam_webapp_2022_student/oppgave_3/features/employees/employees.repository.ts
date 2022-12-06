@@ -44,10 +44,10 @@ export const update = async (id: any, name: any) => {
   try {
     const employee = await prisma.employee.update({
       where: {
-        id,
+        id: Number(id),
       },
       data: {
-        name,
+        name: name,
       },
     })
 
