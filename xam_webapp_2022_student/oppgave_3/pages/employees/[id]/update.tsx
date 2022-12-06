@@ -26,6 +26,11 @@ export default function Update() {
       return
     }
 
+    if (name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)) {
+      setError('Navnet kan ikke inneholde spesialtegn')
+      return
+    }
+
     if (name.length < 3 || name.length > 23) {
       setError('Navnet må være mellom 3 og 23 tegn')
       return
