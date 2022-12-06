@@ -35,7 +35,7 @@ export default function Update() {
       return
     }
 
-    fetch(`../../api/employees/${id}/update`, {
+    fetch(`/api/employees/${id}/update`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

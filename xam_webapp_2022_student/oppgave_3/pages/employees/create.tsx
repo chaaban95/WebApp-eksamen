@@ -31,7 +31,7 @@ export default function Create() {
       return
     }
 
-    fetch('../api/employees/create', {
+    fetch('/api/employees/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

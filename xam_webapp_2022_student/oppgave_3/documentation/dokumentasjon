@@ -1,0 +1,27 @@
+1. pages/employees/[id]/index:
+   Jeg henter en spesifikk ansatt med id fra api via fetch
+
+2. pages/employees/[id]/update:
+   Jeg sender et navn oppdatering med id (via body) til api via fetch og PUT
+
+3. pages/employees/create:
+   Jeg sender et nytt ansatt (via body) til api via fetch og POST
+
+4. pages/employees/index:
+   Jeg kaller 2 apier på denne siden:
+   Den første for å hente alle ansatte
+   Den andre fetcher jeg bare ansatte som inneholder bokstaver
+   fra søk som er lagret på en state etter knapp trykk
+
+5. pages/weeks/[id]/index
+   Her fetcher jeg en spesifikk uke med id
+
+6. pages/weeks/index
+   Her henter jeg alle ukene ved å kalle getWeeks
+
+7. pages/index [root]
+   Her kaller jeg getWeeks for å få alle ukene med alle data
+   Også fetcher jeg de ukene som brukeren velger (via filter) etter
+   knapp trykk ved å bruke 2 states som lagrer 2 dynamiske tall
+
+Alle api kaller har GET som default.

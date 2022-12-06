@@ -19,7 +19,7 @@ export default function Uke() {
       setStatus('loading')
       try {
         if (id) {
-          const result = await fetch(`../../api/weeks/${id}`)
+          const result = await fetch(`/api/weeks/${id}`)
           const data = await result.json()
           setStatus('success')
           setData(data)

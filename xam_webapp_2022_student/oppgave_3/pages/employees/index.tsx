@@ -53,7 +53,7 @@ export default function Employees() {
     event.preventDefault()
     setSearchFilter('')
     setClick(true)
-    let response = await fetch(`../api/employees/search/${searchFilter}`)
+    let response = await fetch(`/api/employees/search/${searchFilter}`)
     let data = await response.json()
     setFilteredData(data)
     console.log(data)
