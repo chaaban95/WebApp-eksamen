@@ -19,7 +19,7 @@ export default function Dag() {
       setStatus('loading')
       try {
         if (id) {
-          const result = await fetch(`../../api/employees/${id}`)
+          const result = await fetch(`/api/employees/${id}`)
           const data = await result.json()
           setStatus('success')
           setData(data)
