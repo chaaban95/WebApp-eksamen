@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   if (req.method === 'POST') {
-    const employee = await employeesController.createEmployee(req, res)
+    await employeesController.createEmployee(req, res)
   } else {
     return res.status(405).json({ success: false, error: 'Method not allowed' })
   }
