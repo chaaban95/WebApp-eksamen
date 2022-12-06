@@ -38,3 +38,31 @@ Statuskoder: 200, 405
 /api/employees/[id]/update // PUT - Oppdaterer navnet til en spesifikk ansatt. Følger med lagdeling her med errorhåndtering og validering.
 Statuskoder: 200, 405, 500, 400
 
+<h2>Sidene</h2>
+1. pages/employees/[id]/index:
+   Henter en spesifikk ansatt med id fra apiet via fetch.
+
+2. pages/employees/[id]/update:
+   Her forandres navnet til en ansatt ved å sende navnet (via body) med fetch med en PUT request til API'et.
+
+3. pages/employees/create:
+   Her lages en ny ansatt ved å sende navnet (via body) med fetch med en POST request til API'et. 
+
+4. pages/employees/index:
+   På denne siden kalles det 2 API endepunkter:
+   Det første kallet henter alle ansatte.
+   Det andre fetcher ansatte som inneholder bokstavene på starten av navnet
+   fra søk som er lagret til state etter at man trykker på knappen søk.
+
+5. pages/weeks/[id]/index
+   Her fetches en spesifikk uke basert på id.
+
+6. pages/weeks/index
+   Her hentes alle ukene ved å kalle getWeeks.
+
+7. pages/index [root]
+   Her kalles getWeeks for å få alle ukene med all data,
+   også fetches de ukene som brukeren velger (via filter) etter
+   å ha trykket på en knapp ved å bruke 2 states som lagrer 2 dynamiske tall.
+
+Alle API kall har GET som default.
