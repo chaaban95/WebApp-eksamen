@@ -8,8 +8,6 @@ export default async function handler(
   if (req.method === 'GET') {
     const weekId: any = req.query.period
 
-    console.log(weekId)
-
     const weeks = await prisma.week.findMany({
       where: {
         week: {
