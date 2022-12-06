@@ -1,0 +1,29 @@
+_id: req_718e627a141747b0ade777355d77a0ca
+type: Request
+parentId: wrk_f7d410567d164ba1a7091773f8bf96ae
+modified: 1670358848400
+created: 1670078451827
+url: http://localhost:3000/api/employees/1/update
+name: api/employees/[id]/update
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "Henrik"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_280c3ac6430e4fa2958953175e04a11c
+authentication: {}
+metaSortKey: -1668708606890
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
