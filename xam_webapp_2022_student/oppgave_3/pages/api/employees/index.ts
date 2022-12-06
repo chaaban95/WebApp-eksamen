@@ -7,8 +7,6 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     const employees = await employeesController.getAllEmployees(req, res)
-
-    return res.status(200).json({ success: true, employees })
   } else {
     return res.status(405).json({ success: false, error: 'Method not allowed' })
   }
