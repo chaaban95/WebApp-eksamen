@@ -33,11 +33,19 @@ const Home: NextPage = () => {
   }, [])
 
   if (isLoading) {
-    return <p>Henter data..</p>
+    return (
+      <main>
+        <p>Henter data..</p>
+      </main>
+    )
   }
 
   if (isError) {
-    return <p>Noe gikk galt..</p>
+    return (
+      <main>
+        <p>Noe gikk galt..</p>
+      </main>
+    )
   }
 
   function handleChange(event: any) {
@@ -86,7 +94,7 @@ const Home: NextPage = () => {
       <>
         {Object?.entries(filteredData)?.map(([key, student]) => {
           return (
-            <>
+            <div key={key}>
               {<h2>Gruppering etter: {key}</h2>}
               {student?.map((st: any) => (
                 <ul key={st.id}>
@@ -98,7 +106,7 @@ const Home: NextPage = () => {
                 </ul>
               ))}
               {<h2 className="count">Antall: {student?.length}</h2>}
-            </>
+            </div>
           )
         })}
       </>
