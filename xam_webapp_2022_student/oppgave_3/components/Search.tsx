@@ -1,9 +1,16 @@
+type SearchProps = {
+  setSearchFilter: React.Dispatch<React.SetStateAction<string>>
+  searchFilter: string
+  search: any
+  reset: any
+}
+
 export default function Search({
   search,
   searchFilter,
   setSearchFilter,
   reset,
-}: any) {
+}: SearchProps) {
   return (
     <>
       <form className="search" onSubmit={search}>

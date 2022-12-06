@@ -1,3 +1,12 @@
+type FilterProps = {
+  setFilterState: React.Dispatch<React.SetStateAction<string>>
+  setFilterState2: React.Dispatch<React.SetStateAction<string>>
+  filterState: number
+  filterState2: number
+  filter: any
+  reset: any
+}
+
 export default function Filter({
   filter,
   filterState,
@@ -5,7 +14,7 @@ export default function Filter({
   setFilterState,
   setFilterState2,
   reset,
-}: any) {
+}: FilterProps) {
   return (
     <>
       <form className="filter" onSubmit={filter}>
@@ -25,7 +34,7 @@ export default function Filter({
         />
         <input
           size="9"
-          min="1"
+          min={filterState}
           max="52"
           className="inSearch"
           id="search"
