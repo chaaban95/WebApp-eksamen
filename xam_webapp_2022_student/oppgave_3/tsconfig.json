@@ -25,7 +25,7 @@
     "**/*.tsx",
     "lib/lunch.ts",
     "lib/lunch.ts"
-  ],
+, "features/employees/employees.controller.ts", "features/employees/employees.repository.ts"  ],
   "exclude": [
     "node_modules"
   ]
