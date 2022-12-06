@@ -1,6 +1,7 @@
 @import './globals.scss';
 
 main {
+  padding: 20px 0;
   max-width: 760px;
   margin: 0 auto;
 }
@@ -33,13 +34,10 @@ label {
   align-items: center;
   gap: 1rem;
 }
-ul {
-  margin-bottom: 2rem;
-}
 
-li {
-  padding: 1rem;
+ul {
   display: flex;
+  margin-bottom: 2rem;
   justify-content: space-between;
   align-items: center;
 
@@ -60,10 +58,22 @@ li {
   }
 }
 
+li {
+  word-break: break-all;
+  padding: 1rem;
+  width: 100%;
+  font-weight: 500;
+}
+
 .count {
   display: flex;
   justify-content: flex-end;
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 5rem;
+}
+
+h1,
+h2 {
+  padding: 1rem;
 }
