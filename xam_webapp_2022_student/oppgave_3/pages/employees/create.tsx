@@ -17,6 +17,11 @@ export default function Create() {
       return
     }
 
+    if (name.match(/\d+/g)) {
+      setError('Navn kan ikke inneholde tall')
+      return
+    }
+
     if (name.length < 3 || name.length > 23) {
       setError('Navnet må være mellom 3 og 23 tegn')
       return
