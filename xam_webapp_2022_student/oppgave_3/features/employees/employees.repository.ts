@@ -1,9 +1,8 @@
 import prisma from '../../lib/db'
 
+// Hente alle ansatte
 export const getAll = async () => {
   try {
-    // const employees = await prisma.employee.findMany()
-
     const employees = await prisma.employee.findMany({
       select: {
         id: true,
@@ -40,7 +39,7 @@ export const create = async (data: any) => {
   }
 }
 
-// TODO:Oppdatere ansatt med en gitt id fra databasen
+// Oppdatere ansatt med en gitt id fra databasen
 export const update = async (id: any, name: any) => {
   try {
     const employee = await prisma.employee.update({

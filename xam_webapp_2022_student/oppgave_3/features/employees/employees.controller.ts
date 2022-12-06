@@ -3,13 +3,6 @@ import * as employeesService from './employees.service'
 // For å vise alle ansatte
 export const getAllEmployees = async (req: any, res: any) => {
   {
-    // 400 Bad Request hvis det eksisterer ingen ansatte <---- TODO: Validering ikke ferdiglagd
-
-    // if (!gotAllEmployees)
-    // return res
-    //   .status(400)
-    //   .json({ success: false, error: 'Missing required field: name' })
-
     const gotAllEmployees = await employeesService.getAll()
 
     return res
@@ -22,7 +15,6 @@ export const getAllEmployees = async (req: any, res: any) => {
 export const createEmployee = async (req: any, res: any) => {
   const { name } = req.body
 
-  // 400 Bad Request hvis ansatt navn mangler
   if (!name)
     return res
       .status(400)
@@ -32,7 +24,6 @@ export const createEmployee = async (req: any, res: any) => {
     name,
   })
 
-  // 500 Internal Server Error hvis noe går galt
   if (!createdEmployee?.success) {
     return res.status(500).json({
       success: false,
@@ -40,7 +31,6 @@ export const createEmployee = async (req: any, res: any) => {
     })
   }
 
-  // 201 Created om alt går bra
   return res.status(201).json({
     success: true,
     data: createdEmployee.data,
@@ -52,13 +42,11 @@ export const updateEmployee = async (req: any, res: any) => {
   const { id } = req.query
   const { name } = req.body
 
-  // 400 Bad Request hvis ansatt mangler id
   if (!id)
     return res
       .status(400)
       .json({ success: false, error: 'Missing required field: id' })
 
-  // 400 Bad Request hvis ansatt mangler navn
   if (!name)
     return res
       .status(400)
@@ -66,7 +54,6 @@ export const updateEmployee = async (req: any, res: any) => {
 
   const updatedEmployee = await employeesService.update(id, name)
 
-  // 500 Internal Server Error hvis noe går galt
   if (!updatedEmployee?.success) {
     return res.status(500).json({
       success: false,
@@ -74,7 +61,6 @@ export const updateEmployee = async (req: any, res: any) => {
     })
   }
 
-  // 200 OK om alt går bra
   return res.status(200).json({
     success: true,
     data: updatedEmployee.data,

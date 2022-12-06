@@ -4,7 +4,6 @@ import * as employeesRepository from './employees.repository'
 export const getAll = async () => {
   const gotAllEmployees = await employeesRepository.getAll()
 
-  // feil ved henting av ansatte ORM
   if (!gotAllEmployees.success)
     return { success: false, error: gotAllEmployees.error }
 
@@ -15,7 +14,6 @@ export const getAll = async () => {
 export const create = async (name: any) => {
   const createdEmployee = await employeesRepository.create(name)
 
-  // feil ved lagring av ansatt via ORM
   if (!createdEmployee.success)
     return { success: false, error: createdEmployee.error }
 
@@ -24,19 +22,15 @@ export const create = async (name: any) => {
 
 // update
 export const update = async (id: any, name: any) => {
-  // Se om ansatt eksisterer
   const employee = await employeesRepository.exist(id)
 
-  // feil med hentingen av data fra databasen via ORM
   if (employee?.error) return { success: false, error: employee.error }
 
-  // Hvis data ikke har verdi eksisterer ikke ansatt
   if (!employee.data)
     return { success: false, error: 'Employee does not exist.' }
 
   const updatedEmployee = await employeesRepository.update(id, name)
 
-  // feil ved lagring av ansatt via ORM
   if (!updatedEmployee.success)
     return { success: false, error: updatedEmployee.error }
   return { success: true, data: updatedEmployee.data }
