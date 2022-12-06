@@ -21,13 +21,11 @@ export default function Update() {
       return
     }
 
-    if (name.match(/\d+/g)) {
-      setError('Navn kan ikke inneholde tall')
-      return
-    }
-
-    if (name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)) {
-      setError('Navnet kan ikke inneholde spesialtegn')
+    if (
+      name.match(/\d+/g) ||
+      name.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
+    ) {
+      setError('Navn kan ikke inneholde tall eller spesialtegn')
       return
     }
 
